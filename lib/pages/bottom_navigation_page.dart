@@ -29,6 +29,7 @@ class BottomNavigationPage extends StatelessWidget {
   }
 }
 
+
 ///
 class BottomNavigationView extends StatelessWidget {
   const BottomNavigationView({super.key, required this.index});

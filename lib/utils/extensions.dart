@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/bloc/bottom_navigation_page_bloc.dart';
+import 'package:library_book/bloc/home_page_bloc.dart';
 import 'package:provider/provider.dart';
 
 extension E on BuildContext {
@@ -8,6 +9,7 @@ extension E on BuildContext {
 
   void navigateBack(BuildContext context) => Navigator.of(context).pop();
 
-  BottomNavigationPageBloc getBottomNavigationPageBloc() =>
-      read<BottomNavigationPageBloc>();
+  BottomNavigationPageBloc getBottomNavigationPageBloc() => read<BottomNavigationPageBloc>();
+  HomePageBloc getHomePageBloc()=> read<HomePageBloc>();
+
 }
