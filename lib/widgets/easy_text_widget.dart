@@ -8,7 +8,7 @@ class EasyTextWidget extends StatelessWidget {
   const EasyTextWidget(
       {Key? key,
         required this.text,
-        this.fontSize = kFontSie14x,
+        this.fontSize = kDefaultFontSize,
         this.fontWeight = FontWeight.w400,
         this.color = kPrimaryTextColor,
         this.decoration = TextDecoration.none,

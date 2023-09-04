@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:library_book/constant/colors.dart';
+import 'package:library_book/constant/dimens.dart';
+import 'package:library_book/widgets/easy_text_widget.dart';
+
+import '../../data/vos/home_page_vo/results_vo/lists_vo.dart';
+import 'books_list_view.dart';
+
+class MainTitleAndImageView extends StatelessWidget {
+  const MainTitleAndImageView({super.key, required this.listVo});
+
+  final ListsVO listVo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kSP15x),
+      child: SizedBox(
+        height: kMainTitleAndImageHeight,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// Book's Main Title
+            EasyTextWidget(
+              text: listVo.listName ?? '',
+              fontWeight: FontWeight.w700,
+              fontSize: kFontSize20x,
+            ),
+            const SizedBox(
+              height: kSP20x,
+            ),
+
+            ///Book's Profile Data
+            HorizontalBookImageAndNameView(
+              mainTitle: listVo.listName ?? '',
+              bookList: listVo.books ?? [],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_book/widgets/easy_text_widget.dart';
 
 class LibraryPage extends StatelessWidget {
   const LibraryPage({super.key});
@@ -6,7 +7,7 @@ class LibraryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text('Library Page'),
+      body: EasyTextWidget(text: 'Library Page',),
     );
   }
 }

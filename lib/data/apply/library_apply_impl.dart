@@ -21,22 +21,16 @@ class LibraryApplyImpl extends LibraryApply {
   final BooksDao _booksDao = BooksDaoImpl();
   final ResultsDao _resultsDao = ResultsDaoImpl();
 
-  @override
-  Stream<List<BooksVO>?> getBooksListFromDatabase() {
-    return _booksDao
-        .watchBooksBox()
-        .startWith(_booksDao.getBookListDatabaseStream())
-        .map((event) => _booksDao.getBookListDatabase());
-  }
 
-  @override
-  Future<List<BooksVO>?> getBooksListFromNetWork(String publishDate) =>
-      _dataAgent.getBooksListFromNetWork(publishDate).then((value) {
-        if (value != null) {
-          _booksDao.save(value);
-        }
-        return value;
-      });
+
+  // @override
+  // Future<List<BooksVO>?> getBooksListFromNetWork(String publishDate) =>
+  //     _dataAgent.getBooksListFromNetWork(publishDate).then((value) {
+  //       if (value != null) {
+  //         _booksDao.save(value);
+  //       }
+  //       return value;
+  //     });
 
   @override
   Stream<ResultsVO?> getResultsFromDataBase(String publishDate) {

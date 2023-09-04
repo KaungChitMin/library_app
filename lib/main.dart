@@ -20,7 +20,7 @@ void main() async {
   Hive.registerAdapter(ListsVOAdapter());
   Hive.registerAdapter(ResultsVOAdapter());
 
-  await Hive.openBox(kBoxNameForResults);
+  await Hive.openBox<ResultsVO>(kBoxNameForResults);
 
   runApp(const LibraryApp());
 }
@@ -33,7 +33,7 @@ class LibraryApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: kLibraryTitle,
-      home: HomePage(),
+      home: BottomNavigationPage(),
     );
   }
 }

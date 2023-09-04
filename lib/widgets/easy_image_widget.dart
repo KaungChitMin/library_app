@@ -11,7 +11,7 @@ class EasyImageWidget extends StatelessWidget {
       this.width})
       : super(key: key);
   final String imageUrl;
-  final BoxFit fit;
+  final BoxFit? fit;
   final double? width;
   final double? height;
 

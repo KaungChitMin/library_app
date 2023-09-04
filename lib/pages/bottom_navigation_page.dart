@@ -41,7 +41,7 @@ class BottomNavigationView extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: index,
       selectedItemColor: kTealColor,
-      unselectedItemColor: kBlackColor,
+      unselectedItemColor: kPrimaryTextColor,
       onTap: (index) => context.getBottomNavigationPageBloc().pageChange(index),
       items: const [
         BottomNavigationBarItem(

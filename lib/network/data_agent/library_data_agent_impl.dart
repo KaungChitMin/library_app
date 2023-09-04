@@ -18,18 +18,18 @@ class LibraryDataAgentImpl extends LibraryDataAgent {
 
   factory LibraryDataAgentImpl() => _singleton;
 
-  @override
-  Future<List<BooksVO>?> getBooksListFromNetWork(String publishDate) =>
-      getResultsFromNetWork(publishDate).then((value) {
-        var lists = value?.lists ?? [];
-        List<BooksVO>? booksList;
-
-        lists = lists.map((e) {
-          e.books = booksList;
-          return e;
-        }).toList();
-        return booksList;
-      });
+  // @override
+  // Future<List<BooksVO>?> getBooksListFromNetWork(String publishDate) =>
+  //     getResultsFromNetWork(publishDate).then((value) {
+  //       var lists = value?.lists ?? [];
+  //       List<BooksVO>? booksList;
+  //
+  //       lists = lists.map((e) {
+  //         e.books = booksList;
+  //         return e;
+  //       }).toList();
+  //       return booksList;
+  //     });
 
   @override
   Future<ResultsVO?> getResultsFromNetWork(String publishDate) => _api

@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:library_book/data/apply/library_apply.dart';
 import 'package:library_book/data/apply/library_apply_impl.dart';
-import 'package:library_book/data/vos/home_page_vo/results_vo/results_vo.dart';
 
 import '../data/vos/home_page_vo/results_vo/lists_vo.dart';
 
@@ -11,7 +10,6 @@ class HomePageBloc extends ChangeNotifier {
   ///state variable
   bool _dispose = false;
   List<ListsVO>? _listsVoList = [];
-  ResultsVO? _resultsVO;
 
   ///getter
 
@@ -23,11 +21,8 @@ class HomePageBloc extends ChangeNotifier {
 
     ///listen results on database by publish date
     _apply.getResultsFromDataBase(publishDate).listen((event) {
-      _resultsVO = event;
-      if(_resultsVO != null){
-        _listsVoList = _resultsVO?.lists ?? [];
-      } else {
-        _listsVoList = [];
+      if (event != null) {
+        _listsVoList = event.lists;
       }
       notifyListeners();
     });

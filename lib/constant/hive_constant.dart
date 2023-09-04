@@ -6,7 +6,7 @@ const int kHiveTypeIDForResults = 4;
 const int kSearchHistoryTypeId = 5;
 
 /// Key
-const kPublishDate = '2023-03-21';
+const kPublishDate = '2023-03-12';
 
 /// box name
 const kBoxNameForResults = 'BOX_FOR_RESULTS';
