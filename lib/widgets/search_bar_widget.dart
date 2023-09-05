@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/constant/colors.dart';
 import 'package:library_book/constant/dimens.dart';
-import 'package:library_book/widgets/easy_text_widget.dart';
 
 import '../constant/strings.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget(
-      {super.key, required this.isEnable, required this.onChanged});
+      {super.key, required this.isEnable, this.onChanged,required this.onTap});
 
   final bool isEnable;
-  final Function(String) onChanged;
+  final Function(String)? onChanged;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,12 @@ class SearchBarWidget extends StatelessWidget {
         autofocus: false,
         enabled: isEnable,
         onChanged: onChanged,
+        onTap: () => onTap(),
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.search,color: Colors.grey,),
+          prefixIcon: const Icon(
+            Icons.search,
+            color: Colors.grey,
+          ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(kSP20x),
               borderSide: const BorderSide(

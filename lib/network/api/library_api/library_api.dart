@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
 import '../../../constant/api_constant.dart';
-import '../../response/library_response.dart';
+import '../../response/library_response/library_response.dart';
 
 part 'library_api.g.dart';
 

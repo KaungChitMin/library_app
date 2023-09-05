@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import '../epub_vo/epub_vo.dart';
 
 part 'access_info_vo.g.dart';
+
 @JsonSerializable()
 class AccessInfo {
   @JsonKey(name: 'country')
@@ -26,7 +27,7 @@ class AccessInfo {
   @JsonKey(name: 'pdf')
   Epub? pdf;
 
-  @JsonKey(name:'webReaderLink' )
+  @JsonKey(name: 'webReaderLink')
   String? webReaderLink;
 
   @JsonKey(name: 'accessViewStatus')
@@ -35,15 +36,18 @@ class AccessInfo {
   @JsonKey(name: 'quoteSharingAllowed')
   bool? quoteSharingAllowed;
 
-  AccessInfo({this.country,
-    this.viewability,
-    this.embeddable,
-    this.publicDomain,
-    this.textToSpeechPermission,
-    this.epub,
-    this.pdf,
-    this.webReaderLink,
-    this.accessViewStatus,
-    this.quoteSharingAllowed});
-  factory AccessInfo.fromJson(Map<String,dynamic> json)=> _$AccessInfoFromJson(json);
+  AccessInfo(
+      {this.country,
+      this.viewability,
+      this.embeddable,
+      this.publicDomain,
+      this.textToSpeechPermission,
+      this.epub,
+      this.pdf,
+      this.webReaderLink,
+      this.accessViewStatus,
+      this.quoteSharingAllowed});
+
+  factory AccessInfo.fromJson(Map<String, dynamic> json) =>
+      _$AccessInfoFromJson(json);
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/constant/dimens.dart';
 import 'package:library_book/constant/hive_constant.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/lists_vo.dart';
+import 'package:library_book/pages/search_page.dart';
+import 'package:library_book/utils/extensions.dart';
 import 'package:library_book/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -28,9 +29,11 @@ class HomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SearchBarWidget(
-                          onChanged: (text) {},
-                          isEnable: true,
-                        ),
+                            isEnable: true,
+                            onTap: () {
+                              context.navigateToNextScreen(
+                                  context, const SearchPage());
+                            }),
                         Expanded(
                           child: ListView.builder(
                               scrollDirection: Axis.vertical,

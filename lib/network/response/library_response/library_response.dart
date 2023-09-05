@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../data/vos/home_page_vo/results_vo/results_vo.dart';
+import '../../../data/vos/home_page_vo/results_vo/results_vo.dart';
 
 part 'library_response.g.dart';
 
@@ -19,5 +19,7 @@ class LibraryResponse {
   ResultsVO? results;
 
   LibraryResponse({this.status, this.copyright, this.numResults, this.results});
-  factory LibraryResponse.fromJson(Map<String,dynamic> json)=> _$LibraryResponseFromJson(json);
+
+  factory LibraryResponse.fromJson(Map<String, dynamic> json) =>
+      _$LibraryResponseFromJson(json);
 }
