@@ -1,35 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'industry_identifiers_vo.dart';
+part of 'search_vo.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
+class SearchVOAdapter extends TypeAdapter<SearchVO> {
   @override
-  final int typeId = 13;
+  final int typeId = 6;
 
   @override
-  IndustryIdentifiersVO read(BinaryReader reader) {
+  SearchVO read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return IndustryIdentifiersVO(
-      type: fields[0] as String?,
-      identifier: fields[1] as String?,
+    return SearchVO(
+      fields[0] as String?,
+      fields[1] as int?,
+      (fields[2] as List?)?.cast<ItemsVO>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, IndustryIdentifiersVO obj) {
+  void write(BinaryWriter writer, SearchVO obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.type)
+      ..write(obj.kind)
       ..writeByte(1)
-      ..write(obj.identifier);
+      ..write(obj.totalItems)
+      ..writeByte(2)
+      ..write(obj.items);
   }
 
   @override
@@ -38,7 +41,7 @@ class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IndustryIdentifiersVOAdapter &&
+      other is SearchVOAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -47,16 +50,16 @@ class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-IndustryIdentifiersVO _$IndustryIdentifiersVOFromJson(
-        Map<String, dynamic> json) =>
-    IndustryIdentifiersVO(
-      type: json['type'] as String?,
-      identifier: json['identifier'] as String?,
+SearchVO _$SearchVOFromJson(Map<String, dynamic> json) => SearchVO(
+      json['kind'] as String?,
+      json['totalItems'] as int?,
+      (json['items'] as List<dynamic>?)
+          ?.map((e) => ItemsVO.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$IndustryIdentifiersVOToJson(
-        IndustryIdentifiersVO instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'identifier': instance.identifier,
+Map<String, dynamic> _$SearchVOToJson(SearchVO instance) => <String, dynamic>{
+      'kind': instance.kind,
+      'totalItems': instance.totalItems,
+      'items': instance.items,
     };

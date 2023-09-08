@@ -5,7 +5,6 @@ import 'package:library_book/pages/search_page.dart';
 import 'package:library_book/utils/extensions.dart';
 import 'package:library_book/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
-
 import '../bloc/home_page_bloc.dart';
 import '../view_items/home_page_view_items/main_title_and_image_view-item.dart';
 import '../widgets/search_bar_widget.dart';

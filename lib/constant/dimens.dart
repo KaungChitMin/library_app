@@ -11,6 +11,7 @@ const double kSP15x = 15.0;
 const double kSP20x = 20.0;
 const double kSP30x = 30.0;
 const double kSP40x = 40.0;
+const double kSP50x = 50.0;
 
 
 ///Font Size

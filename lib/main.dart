@@ -5,9 +5,8 @@ import 'package:library_book/data/vos/home_page_vo/results_vo/books_vo.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/buy_links_vo.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/lists_vo.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/results_vo.dart';
-import 'package:library_book/pages/home_page.dart';
-
 import 'constant/strings.dart';
+import 'data/vos/search_vo/items_vo/items_vo.dart';
 import 'pages/bottom_navigation_page.dart';
 
 void main() async {
@@ -21,6 +20,8 @@ void main() async {
   Hive.registerAdapter(ResultsVOAdapter());
 
   await Hive.openBox<ResultsVO>(kBoxNameForResults);
+  await Hive.openBox<String>(kBoxNameForSearchHistoryVO);
+  await Hive.openBox<ItemsVO>(kBoxNameForItems);
 
   runApp(const LibraryApp());
 }

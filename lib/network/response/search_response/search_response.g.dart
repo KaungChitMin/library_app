@@ -11,7 +11,7 @@ SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
       kind: json['kind'] as String?,
       totalItems: json['totalItems'] as int?,
       items: (json['items'] as List<dynamic>?)
-          ?.map((e) => ItemVO.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ItemsVO.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

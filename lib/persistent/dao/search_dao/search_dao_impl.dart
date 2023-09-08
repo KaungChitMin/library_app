@@ -15,7 +15,7 @@ class SearchDaoImpl extends SearchDao {
   }
 
   @override
-  List<String>? searchStringList() => _getSearchBox().values.toList();
+  List<String>? getSearchStringList() => _getSearchBox().values.toList();
 
   Box<String> _getSearchBox() => Hive.box<String>(kBoxNameForSearchHistoryVO);
 }

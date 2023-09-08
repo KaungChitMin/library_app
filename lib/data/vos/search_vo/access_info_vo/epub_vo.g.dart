@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'industry_identifiers_vo.dart';
+part of 'epub_vo.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
+class EpubVOAdapter extends TypeAdapter<EpubVO> {
   @override
-  final int typeId = 13;
+  final int typeId = 7;
 
   @override
-  IndustryIdentifiersVO read(BinaryReader reader) {
+  EpubVO read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return IndustryIdentifiersVO(
-      type: fields[0] as String?,
-      identifier: fields[1] as String?,
+    return EpubVO(
+      isAvailable: fields[0] as bool?,
+      acsTokenLink: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, IndustryIdentifiersVO obj) {
+  void write(BinaryWriter writer, EpubVO obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.type)
+      ..write(obj.isAvailable)
       ..writeByte(1)
-      ..write(obj.identifier);
+      ..write(obj.acsTokenLink);
   }
 
   @override
@@ -38,7 +38,7 @@ class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IndustryIdentifiersVOAdapter &&
+      other is EpubVOAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -47,16 +47,12 @@ class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-IndustryIdentifiersVO _$IndustryIdentifiersVOFromJson(
-        Map<String, dynamic> json) =>
-    IndustryIdentifiersVO(
-      type: json['type'] as String?,
-      identifier: json['identifier'] as String?,
+EpubVO _$EpubVOFromJson(Map<String, dynamic> json) => EpubVO(
+      isAvailable: json['isAvailable'] as bool?,
+      acsTokenLink: json['acsTokenLink'] as String?,
     );
 
-Map<String, dynamic> _$IndustryIdentifiersVOToJson(
-        IndustryIdentifiersVO instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'identifier': instance.identifier,
+Map<String, dynamic> _$EpubVOToJson(EpubVO instance) => <String, dynamic>{
+      'isAvailable': instance.isAvailable,
+      'acsTokenLink': instance.acsTokenLink,
     };

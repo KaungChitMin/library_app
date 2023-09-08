@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'industry_identifiers_vo.dart';
+part of 'panelization_summary_vo.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
+class PanelizationSummaryVOAdapter extends TypeAdapter<PanelizationSummaryVO> {
   @override
-  final int typeId = 13;
+  final int typeId = 11;
 
   @override
-  IndustryIdentifiersVO read(BinaryReader reader) {
+  PanelizationSummaryVO read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return IndustryIdentifiersVO(
-      type: fields[0] as String?,
-      identifier: fields[1] as String?,
+    return PanelizationSummaryVO(
+      containsEpubBubbles: fields[0] as bool?,
+      containsImageBubbles: fields[1] as bool?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, IndustryIdentifiersVO obj) {
+  void write(BinaryWriter writer, PanelizationSummaryVO obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.type)
+      ..write(obj.containsEpubBubbles)
       ..writeByte(1)
-      ..write(obj.identifier);
+      ..write(obj.containsImageBubbles);
   }
 
   @override
@@ -38,7 +38,7 @@ class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IndustryIdentifiersVOAdapter &&
+      other is PanelizationSummaryVOAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -47,16 +47,16 @@ class IndustryIdentifiersVOAdapter extends TypeAdapter<IndustryIdentifiersVO> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-IndustryIdentifiersVO _$IndustryIdentifiersVOFromJson(
+PanelizationSummaryVO _$PanelizationSummaryVOFromJson(
         Map<String, dynamic> json) =>
-    IndustryIdentifiersVO(
-      type: json['type'] as String?,
-      identifier: json['identifier'] as String?,
+    PanelizationSummaryVO(
+      containsEpubBubbles: json['containsEpubBubbles'] as bool?,
+      containsImageBubbles: json['containsImageBubbles'] as bool?,
     );
 
-Map<String, dynamic> _$IndustryIdentifiersVOToJson(
-        IndustryIdentifiersVO instance) =>
+Map<String, dynamic> _$PanelizationSummaryVOToJson(
+        PanelizationSummaryVO instance) =>
     <String, dynamic>{
-      'type': instance.type,
-      'identifier': instance.identifier,
+      'containsEpubBubbles': instance.containsEpubBubbles,
+      'containsImageBubbles': instance.containsImageBubbles,
     };

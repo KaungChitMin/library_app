@@ -1,5 +1,5 @@
 abstract class SearchDao {
   void save(String query);
 
-  List<String>? searchStringList();
+  List<String>? getSearchStringList();
 }

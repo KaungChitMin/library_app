@@ -8,8 +8,8 @@ part of 'search_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _SearchAPI implements SearchAPI {
-  _SearchAPI(
+class _SearchApi implements SearchApi {
+  _SearchApi(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,9 +21,9 @@ class _SearchAPI implements SearchAPI {
   String? baseUrl;
 
   @override
-  Future<SearchResponse> getSearchResponse(String search) async {
+  Future<SearchResponse> getSearchResponse(String query) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'q': search};
+    final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio

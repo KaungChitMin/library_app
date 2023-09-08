@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../data/vos/search_vo/item_vo/item_vo.dart';
+import '../../../data/vos/search_vo/items_vo/items_vo.dart';
+
 
 part 'search_response.g.dart';
 
@@ -13,7 +14,7 @@ class SearchResponse {
   int? totalItems;
 
   @JsonKey(name: 'items')
-  List<ItemVO>? items;
+  List<ItemsVO>? items;
 
   SearchResponse({this.kind, this.totalItems, this.items});
 
