@@ -24,7 +24,7 @@ class ItemsVOAdapter extends TypeAdapter<ItemsVO> {
       volumeInfo: fields[4] as VolumeInfoVO?,
       saleInfo: fields[5] as SaleInfoVO?,
       accessInfo: fields[6] as AccessInfoVO?,
-      searchInfo: fields[7] as SearchVO?,
+      searchInfo: fields[7] as SearchInfoVO?,
     );
   }
 
@@ -81,7 +81,7 @@ ItemsVO _$ItemsVOFromJson(Map<String, dynamic> json) => ItemsVO(
           : AccessInfoVO.fromJson(json['accessInfo'] as Map<String, dynamic>),
       searchInfo: json['searchInfo'] == null
           ? null
-          : SearchVO.fromJson(json['searchInfo'] as Map<String, dynamic>),
+          : SearchInfoVO.fromJson(json['searchInfo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ItemsVOToJson(ItemsVO instance) => <String, dynamic>{

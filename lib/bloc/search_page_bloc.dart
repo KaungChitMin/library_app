@@ -20,6 +20,8 @@ class SearchPageBloc extends ChangeNotifier {
 
   bool get getIsSearching => _isSearching;
 
+  String get query => _query;
+
   SearchPageBloc() {
     ///Getting Search History list
     final historyList = _apply.getSearchHistoryList();
@@ -34,7 +36,7 @@ class SearchPageBloc extends ChangeNotifier {
     }
 
     ///item list from network
-    _apply.getItemListFromNetWork(_query);
+    _apply.getItemListFromNetWork(query);
 
     ///listen item list from database
     _apply.getItemListFromDatabase().listen((event) {
@@ -52,16 +54,13 @@ class SearchPageBloc extends ChangeNotifier {
     _query = text;
     _isSearching = true;
     notifyListeners();
-    _apply.getItemListFromNetWork(_query).then((value) {
+    _apply.getItemListFromNetWork(query).then((value) {
       if (value != null) {
         _itemsList = value;
         notifyListeners();
       }
     }).whenComplete(() {
       _isSearching = false;
-      notifyListeners();
-      _apply.saveSearchQuery(text);
-      addQueryToSearchHistoryList(text);
       notifyListeners();
     });
   }

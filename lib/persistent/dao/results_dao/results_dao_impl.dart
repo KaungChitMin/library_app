@@ -1,7 +1,8 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:library_book/constant/hive_constant.dart';
-import 'package:library_book/data/vos/home_page_vo/results_vo/results_vo.dart';
 import 'package:library_book/persistent/dao/results_dao/results_dao.dart';
+
+import '../../../data/vos/home_page_vo/results_vo/result_vo/result_vo.dart';
 
 class ResultsDaoImpl extends ResultsDao {
   @override

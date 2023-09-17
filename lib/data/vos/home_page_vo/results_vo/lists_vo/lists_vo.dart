@@ -1,10 +1,9 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../../../../constant/hive_constant.dart';
-import 'books_vo.dart';
+import 'package:library_book/constant/hive_constant.dart';
 
+import '../books_vo/book_vo.dart';
 part 'lists_vo.g.dart';
-
 @JsonSerializable()
 @HiveType(typeId: kHiveTypeIDForLists)
 class ListsVO {
@@ -46,15 +45,13 @@ class ListsVO {
 
   ListsVO(
       {this.listId,
-      this.listName,
-      this.listNameEncoded,
-      this.displayName,
-      this.updated,
-      this.listImage,
-      this.listImageWidth,
-      this.listImageHeight,
-      this.books});
-
-  factory ListsVO.fromJson(Map<String, dynamic> json) =>
-      _$ListsVOFromJson(json);
+        this.listName,
+        this.listNameEncoded,
+        this.displayName,
+        this.updated,
+        this.listImage,
+        this.listImageWidth,
+        this.listImageHeight,
+        this.books});
+  factory ListsVO.fromJson(Map<String,dynamic> json)=> _$ListsVOFromJson(json);
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'books_vo.dart';
+part of 'book_vo.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -18,6 +18,7 @@ class BooksVOAdapter extends TypeAdapter<BooksVO> {
     };
     return BooksVO(
       ageGroup: fields[0] as String?,
+      order: fields[26] as int?,
       amazonProductUrl: fields[1] as String?,
       articleChapterLink: fields[2] as String?,
       author: fields[3] as String?,
@@ -41,14 +42,16 @@ class BooksVOAdapter extends TypeAdapter<BooksVO> {
       title: fields[21] as String?,
       updatedDate: fields[22] as String?,
       weeksOnList: fields[23] as int?,
-      buyLinks: (fields[24] as List?)?.cast<BuyLinksVO>(),
+      buyLinks: (fields[24] as List?)?.cast<BuyLinks>(),
+      isSelected: fields[25] as bool?,
+      myListName: fields[27] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BooksVO obj) {
     writer
-      ..writeByte(25)
+      ..writeByte(28)
       ..writeByte(0)
       ..write(obj.ageGroup)
       ..writeByte(1)
@@ -98,7 +101,13 @@ class BooksVOAdapter extends TypeAdapter<BooksVO> {
       ..writeByte(23)
       ..write(obj.weeksOnList)
       ..writeByte(24)
-      ..write(obj.buyLinks);
+      ..write(obj.buyLinks)
+      ..writeByte(25)
+      ..write(obj.isSelected)
+      ..writeByte(26)
+      ..write(obj.order)
+      ..writeByte(27)
+      ..write(obj.myListName);
   }
 
   @override
@@ -118,6 +127,7 @@ class BooksVOAdapter extends TypeAdapter<BooksVO> {
 
 BooksVO _$BooksVOFromJson(Map<String, dynamic> json) => BooksVO(
       ageGroup: json['age_group'] as String?,
+      order: json['order'] as int?,
       amazonProductUrl: json['amazon_product_url'] as String?,
       articleChapterLink: json['article_chapter_link'] as String?,
       author: json['author'] as String?,
@@ -142,9 +152,10 @@ BooksVO _$BooksVOFromJson(Map<String, dynamic> json) => BooksVO(
       updatedDate: json['update_date'] as String?,
       weeksOnList: json['weeks_on_list'] as int?,
       buyLinks: (json['buy_links'] as List<dynamic>?)
-          ?.map((e) => BuyLinksVO.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => BuyLinks.fromJson(e as Map<String, dynamic>))
           .toList(),
       isSelected: json['isSelected'] as bool? ?? false,
+      myListName: json['myListName'] as String?,
     );
 
 Map<String, dynamic> _$BooksVOToJson(BooksVO instance) => <String, dynamic>{
@@ -174,4 +185,6 @@ Map<String, dynamic> _$BooksVOToJson(BooksVO instance) => <String, dynamic>{
       'weeks_on_list': instance.weeksOnList,
       'buy_links': instance.buyLinks,
       'isSelected': instance.isSelected,
+      'order': instance.order,
+      'myListName': instance.myListName,
     };

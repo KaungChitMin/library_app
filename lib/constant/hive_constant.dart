@@ -15,6 +15,10 @@ const int kHiveTypeIDForIndustry = 13;
 const int kHiveTypeIDForVolumeInfo = 14;
 const int kHiveTypeIDForItems = 15;
 const int kHiveTypeIDForSearchInfo = 16;
+const int kHiveTypeIDForSeriesInfo = 17;
+const int kHiveTypeIDForVolumeSeries = 18;
+
+
 
 
 
@@ -34,3 +38,4 @@ const kBoxNameForResults = 'BOX_FOR_RESULTS';
 const kBoxNameForSearchHistoryVO = 'BOX_FOR_SEARCH_HISTORY';
 const kBoxNameForBook = 'BOX_FOR_BOOKS';
 const kBoxNameForItems = 'BOX_FOR_ITEMS';
+const kBoxNameForLists = 'BOX_FOR_LISTS';

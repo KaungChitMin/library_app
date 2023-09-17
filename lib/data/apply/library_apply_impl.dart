@@ -1,16 +1,20 @@
-import 'package:library_book/data/vos/home_page_vo/results_vo/results_vo.dart';
 import 'package:library_book/network/data_agent/library_data_agent.dart';
 import 'package:library_book/network/data_agent/library_data_agent_impl.dart';
 import 'package:library_book/persistent/dao/books_dao/books_dao.dart';
 import 'package:library_book/persistent/dao/books_dao/books_dao_impl.dart';
 import 'package:library_book/persistent/dao/items_dao/items_dao.dart';
 import 'package:library_book/persistent/dao/items_dao/items_dao_impl.dart';
+import 'package:library_book/persistent/dao/lists_dao/lists_dao.dart';
+import 'package:library_book/persistent/dao/lists_dao/lists_dao_impl.dart';
 import 'package:library_book/persistent/dao/results_dao/results_dao.dart';
 import 'package:library_book/persistent/dao/results_dao/results_dao_impl.dart';
 import 'package:library_book/persistent/dao/search_dao/search_dao.dart';
 import 'package:library_book/persistent/dao/search_dao/search_dao_impl.dart';
 import 'package:stream_transform/stream_transform.dart';
 
+import '../vos/home_page_vo/results_vo/books_vo/book_vo.dart';
+import '../vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
+import '../vos/home_page_vo/results_vo/result_vo/result_vo.dart';
 import '../vos/search_vo/items_vo/items_vo.dart';
 import 'library_apply.dart';
 
@@ -26,6 +30,7 @@ class LibraryApplyImpl extends LibraryApply {
   final ResultsDao _resultsDao = ResultsDaoImpl();
   final SearchDao _searchDao = SearchDaoImpl();
   final ItemsDao _itemsDao = ItemsDaoImpl();
+  final ListsDao _listsDao = ListsDaoImpl();
 
   // @override
   // Future<List<BooksVO>?> getBooksListFromNetWork(String publishDate) =>
@@ -76,5 +81,37 @@ class LibraryApplyImpl extends LibraryApply {
         .watchItemsBox()
         .startWith(_itemsDao.getItemListFromDatabaseStream())
         .map((event) => _itemsDao.getItemsListFromDatabase());
+  }
+
+  @override
+  Stream<List<ListsVO>?> getListsListFromDatabase() {
+    return _listsDao
+        .watchListsBox()
+        .startWith(_listsDao.getListsFromDatabaseStream())
+        .map((event) => _listsDao.getListsFromDatabase());
+  }
+
+  @override
+  Future<List<ListsVO>?> getListsListFromNetwork(String publishDate) =>
+      _dataAgent.getListsList(publishDate).then((value) {
+        var temp = _listsDao.getListsFromDatabase();
+        if (temp != null && temp.isNotEmpty) {
+          _listsDao.save(value!);
+        }
+        return value;
+      });
+
+  @override
+  void saveBook(BooksVO book) => _booksDao.saveBook(book);
+
+  @override
+  void clearBookBox() => _booksDao.clearBookBox();
+
+  @override
+  Stream<List<BooksVO>?> getBookFromDatabaseStream() {
+    return _booksDao
+        .watchBookBox()
+        .startWith(_booksDao.getBookFromDatabaseStream())
+        .map((event) => _booksDao.getBookFromDatabase());
   }
 }

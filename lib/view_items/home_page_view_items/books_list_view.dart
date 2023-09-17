@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-
+import 'package:library_book/constant/colors.dart';
+import 'package:library_book/utils/extensions.dart';
 import '../../constant/dimens.dart';
-import '../../data/vos/home_page_vo/results_vo/books_vo.dart';
+import '../../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import '../../widgets/book_image_widget.dart';
 import '../../widgets/book_name_widget.dart';
 import 'bottom_sheet_view.dart';
 
+///Scrolling For Books
 class HorizontalBookImageAndNameView extends StatelessWidget {
   const HorizontalBookImageAndNameView(
-      {super.key, required this.bookList, required this.mainTitle});
+      {super.key,
+      required this.bookList,
+      required this.mainTitle,
+      required this.isHomeScreen});
 
   final List<BooksVO> bookList;
   final String mainTitle;
+  final bool isHomeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +25,18 @@ class HorizontalBookImageAndNameView extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: bookList.length,
-        itemBuilder: (_, index) => BooksImageAndNameView(
-          imageUrl: bookList[index].bookImage ?? '',
-          bookName: bookList[index].title ?? '',
-          mainTitle: mainTitle,
-        ),
+        itemBuilder: (_, index) => isHomeScreen
+            ? BooksImageAndNameView(
+                booksVO: bookList[index],
+                mainTitle: mainTitle,
+                isHomeScreen: isHomeScreen)
+            //: (bookList[index].isSelected == true)
+            : BooksImageAndNameView(
+                booksVO: bookList[index],
+                mainTitle: mainTitle,
+                isHomeScreen: isHomeScreen,
+              ),
+        //  : const SizedBox.shrink(),
         separatorBuilder: (_, index) => const SizedBox(
           width: kSP10x,
         ),
@@ -32,16 +45,17 @@ class HorizontalBookImageAndNameView extends StatelessWidget {
   }
 }
 
+///Book's Detail Session
 class BooksImageAndNameView extends StatelessWidget {
   const BooksImageAndNameView(
       {super.key,
-      required this.imageUrl,
-      required this.bookName,
-      required this.mainTitle});
+      required this.mainTitle,
+      required this.booksVO,
+      required this.isHomeScreen});
 
-  final String imageUrl;
-  final String bookName;
+  final BooksVO booksVO;
   final String mainTitle;
+  final bool isHomeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -56,22 +70,52 @@ class BooksImageAndNameView extends StatelessWidget {
               showBottomSheet(
                   context: context,
                   builder: (_) => BottomSheetView(
-                        imageUrl: imageUrl,
-                        bookName: bookName,
+                        imageUrl: booksVO.bookImage ?? '',
+                        bookName: booksVO.title ?? '',
                         mainTitle: mainTitle,
                       ));
             },
-            child: BookImageWidget(
-              imageUrl: imageUrl,
-            ),
+            child: Stack(children: [
+              BookImageWidget(
+                imageUrl: booksVO.bookImage ?? '',
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(right: kSP20x, top: kSP10x),
+                  child: Align(
+                      alignment: Alignment.topRight,
+                      child: CircleAvatar(
+                        radius: kSP18x,
+                        backgroundColor: kSecondaryTextColor,
+                        child: Center(
+                            child: IconButton(
+                          onPressed: () => isHomeScreen
+                              ? context
+                                  .getHomePageBloc()
+                                  .checkFavourite(mainTitle, booksVO)
+                              : context
+                                  .getFavouritePageBloc()
+                                  .checkFavourite(mainTitle, booksVO),
+                          icon: Center(
+                              child: (booksVO.isSelected ?? false)
+                                  ? const Icon(
+                                      Icons.favorite,
+                                      color: kTealColor,
+                                      size: kSP18x,
+                                    )
+                                  : const Icon(
+                                      Icons.favorite_border,
+                                      color: kGreyColor,
+                                      size: kSP18x,
+                                    )),
+                        )),
+                      )))
+            ]),
           ),
           const SizedBox(
             height: kSP10x,
           ),
-
-          ///
           BookNameWidget(
-            bookName: bookName,
+            bookName: booksVO.title ?? ' ',
             fontSize: kBookNameFontSize,
           )
         ],

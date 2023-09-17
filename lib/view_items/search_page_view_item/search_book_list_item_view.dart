@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../constant/strings.dart';
 import '../../data/vos/search_vo/items_vo/items_vo.dart';
-import 'search_book_scroll_view.dart';
+import 'book_image_and_name_view.dart';
 
 class SearchBookListItemView extends StatelessWidget {
   const SearchBookListItemView({super.key});
@@ -17,15 +17,9 @@ class SearchBookListItemView extends StatelessWidget {
     return Selector<SearchPageBloc, bool>(
         selector: (_, bloc) => bloc.getIsSearching,
         builder: (_, isSearching, __) =>
-        (isSearching)
-            ? const LoadingWidget()
-            : const BookListView(
-
-        )
-    );
+            (isSearching) ? const LoadingWidget() : const BookListView());
   }
 }
-
 
 class BookListView extends StatelessWidget {
   const BookListView({super.key});
@@ -44,13 +38,12 @@ class BookListView extends StatelessWidget {
           return ListView.separated(
             itemCount: itemList.length,
             itemBuilder: (_, index) {
-              BookImageAndNameView(
-                volumeInfoVO: itemList[index].volumeInfo!,
-              );
+              BookImageAndNameView(volumeInfoVO: itemList[index].volumeInfo!);
             },
-            separatorBuilder: (_, index) => const SizedBox(height: kSP15x,),);
-        }
-
-    );
+            separatorBuilder: (_, index) => const SizedBox(
+              height: kSP15x,
+            ),
+          );
+        });
   }
 }

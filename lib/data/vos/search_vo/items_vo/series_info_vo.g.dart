@@ -3,6 +3,39 @@
 part of 'series_info_vo.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SeriesInfoVOAdapter extends TypeAdapter<SeriesInfoVO> {
+  @override
+  final int typeId = 17;
+
+  @override
+  SeriesInfoVO read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SeriesInfoVO();
+  }
+
+  @override
+  void write(BinaryWriter writer, SeriesInfoVO obj) {
+    writer.writeByte(0);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SeriesInfoVOAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

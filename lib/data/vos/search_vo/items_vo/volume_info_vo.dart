@@ -2,8 +2,8 @@ import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_book/constant/hive_constant.dart';
 
-import '../industry_identifiers_vo/industry_identifiers_vo.dart';
 import 'image_links_vo.dart';
+import 'industry_identifiers_vo.dart';
 import 'panelization_summary_vo.dart';
 import 'reading_modes_vo.dart';
 import 'series_info_vo.dart';

@@ -7,7 +7,7 @@ class BookImageWidget extends StatelessWidget {
   const BookImageWidget({
     super.key,
     required this.imageUrl,
-     this.height,
+    this.height,
   });
 
   final double? height;

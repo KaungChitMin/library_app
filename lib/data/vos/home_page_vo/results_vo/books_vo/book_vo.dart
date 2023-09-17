@@ -1,14 +1,14 @@
-import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:library_book/constant/hive_constant.dart';
 
-import '../../../../constant/hive_constant.dart';
-import 'buy_links_vo.dart';
-
-part 'books_vo.g.dart';
-
+import '../buy_links_vo/buy_link_vo.dart';
+part 'book_vo.g.dart';
 @JsonSerializable()
 @HiveType(typeId: kHiveTypeIDForBooks)
 class BooksVO {
+
   @JsonKey(name: 'age_group')
   @HiveField(0)
   String? ageGroup;
@@ -107,37 +107,47 @@ class BooksVO {
 
   @JsonKey(name: 'buy_links')
   @HiveField(24)
-  List<BuyLinksVO>? buyLinks;
+  List<BuyLinks>? buyLinks;
 
-  bool isSelected;
+  @HiveField(25)
+  bool? isSelected;
+
+  @HiveField(26)
+  int? order;
+
+  @HiveField(27)
+  String? myListName;
 
   BooksVO(
       {this.ageGroup,
-      this.amazonProductUrl,
-      this.articleChapterLink,
-      this.author,
-      this.bookImage,
-      this.bookImageWidth,
-      this.bookImageHeight,
-      this.bookReviewLink,
-      this.contributor,
-      this.contributorNote,
-      this.createdDate,
-      this.description,
-      this.firstChapterLink,
-      this.price,
-      this.primaryIsbn10,
-      this.primaryIsbn13,
-      this.bookUri,
-      this.publisher,
-      this.rank,
-      this.rankLastWeek,
-      this.sundayReviewLink,
-      this.title,
-      this.updatedDate,
-      this.weeksOnList,
-      this.buyLinks,
-      this.isSelected = false});
+        this.order,
+        this.amazonProductUrl,
+        this.articleChapterLink,
+        this.author,
+        this.bookImage,
+        this.bookImageWidth,
+        this.bookImageHeight,
+        this.bookReviewLink,
+        this.contributor,
+        this.contributorNote,
+        this.createdDate,
+        this.description,
+        this.firstChapterLink,
+        this.price,
+        this.primaryIsbn10,
+        this.primaryIsbn13,
+        this.bookUri,
+        this.publisher,
+        this.rank,
+        this.rankLastWeek,
+        this.sundayReviewLink,
+        this.title,
+        this.updatedDate,
+        this.weeksOnList,
+        this.buyLinks,
+        this.isSelected =false,
+        this.myListName
+      });
 
-  factory BooksVO.fromJson(Map<String, dynamic> json) => _$BooksVOFromJson(json);
+  factory BooksVO.fromJson(Map<String,dynamic> json) => _$BooksVOFromJson(json);
 }

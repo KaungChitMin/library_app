@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_book/constant/hive_constant.dart';
+import 'package:library_book/data/vos/search_vo/items_vo/search_info_vo.dart';
 
-import '../access_info_vo/access_info_vo.dart';
-import '../search_vo/search_vo.dart';
+import 'access_info_vo.dart';
 import 'sale_info_vo.dart';
 import 'volume_info_vo.dart';
 
@@ -42,7 +42,7 @@ class ItemsVO {
 
   @JsonKey(name: 'searchInfo')
   @HiveField(7)
-  SearchVO? searchInfo;
+  SearchInfoVO? searchInfo;
 
   ItemsVO(
       {this.kind,
@@ -54,5 +54,6 @@ class ItemsVO {
       this.accessInfo,
       this.searchInfo});
 
-  factory ItemsVO.fromJson(Map<String, dynamic> json) => _$ItemsVOFromJson(json);
+  factory ItemsVO.fromJson(Map<String, dynamic> json) =>
+      _$ItemsVOFromJson(json);
 }

@@ -6,3 +6,5 @@ const String kShelfText = 'Add To Shelf';
 const String kCancelText = 'Cancel';
 const String kSearchText = 'Search Books';
 const String kNoDataText = 'No Data In Database';
+const String kYourBooksText = 'Your Books';
+const String kYourShelfText = 'Your Shelf';

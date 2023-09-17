@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/constant/colors.dart';
 import 'package:library_book/constant/dimens.dart';
 import 'package:library_book/widgets/easy_text_widget.dart';
-
-import '../../data/vos/home_page_vo/results_vo/lists_vo.dart';
+import '../../data/vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
 import 'books_list_view.dart';
 
 class MainTitleAndImageView extends StatelessWidget {
-  const MainTitleAndImageView({super.key, required this.listVo});
+  const MainTitleAndImageView(
+      {super.key, required this.listVo, required this.isHomeScreen});
 
   final ListsVO listVo;
+  final bool isHomeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,11 @@ class MainTitleAndImageView extends StatelessWidget {
               height: kSP20x,
             ),
 
-            ///Book's Profile Data
+            ///Book's Profile Session
             HorizontalBookImageAndNameView(
               mainTitle: listVo.listName ?? '',
               bookList: listVo.books ?? [],
+              isHomeScreen: isHomeScreen,
             ),
           ],
         ),

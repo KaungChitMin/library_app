@@ -1,13 +1,30 @@
-import '../../../data/vos/home_page_vo/results_vo/books_vo.dart';
+// import '../../../data/vos/home_page_vo/results_vo/books_vo.dart';
+//
+// abstract class BooksDao {
+//   void save(BooksVO booksVO);
+//
+//   List<BooksVO>? getBookListDatabase();
+//
+//   Stream<List<BooksVO>?> getBookListDatabaseStream();
+//
+//   Stream watchBooksBox();
+//
+//   void clearBooksBox();
+// }
 
-abstract class BooksDao {
-  void save(List <BooksVO> booksList);
 
-  List<BooksVO>? getBookListDatabase();
+import '../../../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 
-  Stream<List<BooksVO>?> getBookListDatabaseStream();
+abstract class BooksDao{
 
-  Stream watchBooksBox();
+  void saveBook(BooksVO book);
 
-  void clearBooksBoxById(int id);
+  List<BooksVO>? getBookFromDatabase();
+
+  Stream watchBookBox();
+
+  Stream<List<BooksVO>?> getBookFromDatabaseStream();
+
+  void clearBookBox();
+
 }

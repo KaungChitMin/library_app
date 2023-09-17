@@ -1,8 +1,8 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'lists_vo.dart';
 
-part 'results_vo.g.dart';
+import '../lists_vo/lists_vo.dart';
+part 'result_vo.g.dart';
 
 @JsonSerializable()
 @HiveType(typeId: 4)
@@ -33,12 +33,10 @@ class ResultsVO {
 
   ResultsVO(
       {this.bestsellersDate,
-      this.publishedDate,
-      this.publishedDateDescription,
-      this.previousPublishedDate,
-      this.nextPublishedDate,
-      this.lists});
-
-  factory ResultsVO.fromJson(Map<String, dynamic> json) =>
-      _$ResultsVOFromJson(json);
+        this.publishedDate,
+        this.publishedDateDescription,
+        this.previousPublishedDate,
+        this.nextPublishedDate,
+        this.lists});
+  factory ResultsVO.fromJson(Map<String,dynamic> json)=> _$ResultsVOFromJson(json);
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'results_vo.dart';
+part of 'result_vo.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
