@@ -8,3 +8,7 @@ const String kSearchText = 'Search Books';
 const String kNoDataText = 'No Data In Database';
 const String kYourBooksText = 'Your Books';
 const String kYourShelfText = 'Your Shelf';
+const String kNoBooksText = 'There is no book';
+const String kShelfIsEmpty = 'Shelf Name Is Empty';
+const String kEnterShelfName = '  Enter Shelf Name';
+const String kCreateNew = 'Create New';

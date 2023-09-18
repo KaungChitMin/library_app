@@ -36,7 +36,7 @@ class MainTitleAndImageView extends StatelessWidget {
               mainTitle: listVo.listName ?? '',
               bookList: listVo.books ?? [],
               isHomeScreen: isHomeScreen,
-            ),
+            )
           ],
         ),
       ),

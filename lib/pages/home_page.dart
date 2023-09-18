@@ -5,8 +5,7 @@ import 'package:library_book/utils/extensions.dart';
 import 'package:library_book/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 import '../bloc/home_page_bloc.dart';
-import '../data/vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
-import '../view_items/home_page_view_items/main_title_and_image_view-item.dart';
+import '../view_items/home_page_view_items/vertical_books_view_item.dart';
 import '../widgets/search_bar_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,11 +14,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => HomePageBloc(kPublishDate),
-      child: Scaffold(
-          body: Selector<HomePageBloc, List<ListsVO>?>(
-              selector: (_, bloc) => bloc.getListsVoList,
-              builder: (_, listVoList, __) => listVoList == null
+        create: (_) => HomePageBloc(kPublishDate),
+        child: Scaffold(
+          body: Consumer<HomePageBloc>(
+              builder: (_, bloc, __) => (bloc.getListsVoList == null)
                   ? const Center(
                       child: LoadingWidget(),
                     )
@@ -36,18 +34,11 @@ class HomePage extends StatelessWidget {
                             }),
 
                         ///All Books Session
-                        Expanded(
-                          child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            itemCount: listVoList.length,
-                            itemBuilder: (_, index) => MainTitleAndImageView(
-                              listVo: listVoList[index],
-                              isHomeScreen: true,
-                            ),
-                          ),
+                        VerticalBooksListViewItem(
+                          listsVOList: bloc.getListsVoList!,
                         ),
                       ],
-                    ))),
-    );
+                    )),
+        ));
   }
 }

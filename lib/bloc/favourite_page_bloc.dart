@@ -11,35 +11,19 @@ class FavouritePageBloc extends ChangeNotifier {
   final ListsDaoImpl _listsDao = ListsDaoImpl();
 
   bool _dispose = false;
-  final List<ListsVO> _favouriteList = [];
+  List<ListsVO>? _favouriteList = [];
+
+  List<ListsVO>? get getFavouriteList => _favouriteList;
 
   FavouritePageBloc() {
-    _apply.getListsListFromDatabase().listen((event) {
+    _apply.getListsFromDataBase().listen((event) {
       if (event != null) {
-        event = _favouriteList;
+        _favouriteList = event;
         notifyListeners();
       }
       notifyListeners();
     });
   }
-
-  // void checkFavourite(String mainTitle, BooksVO booksVO) {
-  //   final favouriteList = _listsDao.getListsBox.get(mainTitle);
-  //   if (favouriteList != null) {
-  //     var favoriteBook = favouriteList.books;
-  //
-  //     if (favoriteBook != null) {
-  //       for (var value in favoriteBook) {
-  //         if (value.title == booksVO.title) {
-  //           value.isSelected = true;
-  //         } else {
-  //           value.isSelected = false;
-  //         }
-  //       }
-  //       _listsDao.save(_favouriteList);
-  //     }
-  //   }
-  // }
 
   void checkFavourite(String mainTitle, BooksVO booksVO) {
     final favouriteList = _listsDao.getListsBox.get(mainTitle);
@@ -50,7 +34,7 @@ class FavouritePageBloc extends ChangeNotifier {
           favouriteBook.isSelected = !(favouriteBook.isSelected ?? false);
         }
       }
-      _listsDao.save(_favouriteList);
+      _listsDao.save(_favouriteList!);
     }
   }
 

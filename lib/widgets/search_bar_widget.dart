@@ -6,7 +6,11 @@ import '../constant/strings.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget(
-      {super.key, required this.isEnable, this.onChanged,required this.onTap, this.autoFocus=false});
+      {super.key,
+      required this.isEnable,
+      this.onChanged,
+      required this.onTap,
+      this.autoFocus = false});
 
   final bool isEnable;
   final Function(String)? onChanged;
@@ -16,7 +20,7 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(top: kSP40x,left: kSP20x,right: kSP20x),
       child: TextField(
         autofocus: autoFocus,
         enabled: isEnable,

@@ -13,62 +13,25 @@ class HomePageBloc extends ChangeNotifier {
   ///state variable
   bool _dispose = false;
   List<ListsVO>? _listsVoList = [];
-  List<BooksVO>? _bookList = [];
 
   ///getter
   List<ListsVO>? get getListsVoList => _listsVoList;
 
-  List<BooksVO>? get getBooksList => _bookList;
-
+  ///Bloc
   HomePageBloc(String publishDate) {
-    ///clear book box
-    _apply.clearBookBox();
+    ///getting lists from network
+    _apply.getListsListFromNetwork(publishDate);
 
-    ///results vo from network
-    _apply.getResultsFromNetWork(publishDate);
-
-    ///listen book list from database
-    _apply.getBookFromDatabaseStream().listen((event) {
-      if (event != null) {
-        _bookList = event;
-      } else if (event!.isEmpty) {
-        _bookList = [];
-      } else {
-        _bookList = null;
-      }
-      notifyListeners();
-    });
-
-    ///listen results on database by publish date
-    _apply.getResultsFromDataBase(publishDate).listen((event) {
-      if (event != null) {
-        _listsVoList = event.lists;
-      } else if (event == null) {
-        _listsVoList = null;
-      } else {
-        _listsVoList = [];
+    ///listen lists vo list on database
+    _apply.getListsFromDataBase().listen((event) {
+      if (event != null && event.isNotEmpty) {
+        _listsVoList = event;
       }
       notifyListeners();
     });
   }
 
-  // void checkFavourite(String mainTitle, BooksVO booksVO) {
-  //   final favouriteList = _listsDao.getListsBox.get(mainTitle);
-  //   if (favouriteList != null) {
-  //     var favoriteBook = favouriteList.books;
-  //
-  //     if (favoriteBook != null) {
-  //       for (var value in favoriteBook) {
-  //         if (value.title == booksVO.title) {
-  //           value.isSelected = true;
-  //         } else {
-  //           value.isSelected = false;
-  //         }
-  //       }
-  //       _listsDao.save(_listsVoList!);
-  //     }
-  //   }
-  // }
+  ///changing favourite icon when book title same
   void checkFavourite(String mainTitle, BooksVO booksVO) {
     final listNameInListVO = _listsDao.getListsBox.get(mainTitle);
     if (listNameInListVO != null) {

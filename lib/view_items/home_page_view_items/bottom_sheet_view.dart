@@ -113,7 +113,7 @@ class ShelfAndCancelWidget extends StatelessWidget {
           width: kSP30x,
         ),
         TextButton(
-            onPressed: ()=> onTap(),
+            onPressed: () => onTap(),
             child: EasyTextWidget(
               text: text,
               fontSize: kShelfAndCancelFontSize,

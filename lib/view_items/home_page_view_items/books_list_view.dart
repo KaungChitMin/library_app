@@ -30,13 +30,13 @@ class HorizontalBookImageAndNameView extends StatelessWidget {
                 booksVO: bookList[index],
                 mainTitle: mainTitle,
                 isHomeScreen: isHomeScreen)
-            //: (bookList[index].isSelected == true)
-            : BooksImageAndNameView(
-                booksVO: bookList[index],
-                mainTitle: mainTitle,
-                isHomeScreen: isHomeScreen,
-              ),
-        //  : const SizedBox.shrink(),
+            : (bookList[index].isSelected == true)
+                ? BooksImageAndNameView(
+                    booksVO: bookList[index],
+                    mainTitle: mainTitle,
+                    isHomeScreen: isHomeScreen,
+                  )
+                : const SizedBox.shrink(),
         separatorBuilder: (_, index) => const SizedBox(
           width: kSP10x,
         ),

@@ -36,7 +36,7 @@ class SearchPageBloc extends ChangeNotifier {
     }
 
     ///item list from network
-    _apply.getItemListFromNetWork(query);
+    _apply.getItemListFromNetwork(query);
 
     ///listen item list from database
     _apply.getItemListFromDatabase().listen((event) {
@@ -54,7 +54,7 @@ class SearchPageBloc extends ChangeNotifier {
     _query = text;
     _isSearching = true;
     notifyListeners();
-    _apply.getItemListFromNetWork(query).then((value) {
+    _apply.getItemListFromNetwork(query).then((value) {
       if (value != null) {
         _itemsList = value;
         notifyListeners();
