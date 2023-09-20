@@ -1,4 +1,4 @@
-import '../../../data/vos/search_vo/items_vo/items_vo.dart';
+import '../../../data/vos/search_vo/item_vo/item_vo.dart';
 
 abstract class ItemsDao {
   void save(List<ItemsVO> itemsList);

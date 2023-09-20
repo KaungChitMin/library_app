@@ -42,7 +42,7 @@ class SearchBarWidget extends StatelessWidget {
                 color: Colors.grey,
               )),
           hintText: kSearchText,
-          hintStyle: const TextStyle(color: kPrimaryTextColor),
+          hintStyle: const TextStyle(color: kBlackColor),
         ),
       ),
     );

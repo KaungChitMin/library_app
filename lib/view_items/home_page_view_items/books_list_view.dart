@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/constant/colors.dart';
-import 'package:library_book/utils/extensions.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
+
 import '../../constant/dimens.dart';
 import '../../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import '../../widgets/book_image_widget.dart';
@@ -70,8 +71,8 @@ class BooksImageAndNameView extends StatelessWidget {
               showBottomSheet(
                   context: context,
                   builder: (_) => BottomSheetView(
-                    booksVO: booksVO,
-                    imageUrl: booksVO.bookImage ?? '',
+                        booksVO: booksVO,
+                        imageUrl: booksVO.bookImage ?? '',
                         mainTitle: mainTitle,
                       ));
             },
@@ -85,7 +86,7 @@ class BooksImageAndNameView extends StatelessWidget {
                       alignment: Alignment.topRight,
                       child: CircleAvatar(
                         radius: kSP18x,
-                        backgroundColor: kSecondaryTextColor,
+                        backgroundColor: kWhiteColor,
                         child: Center(
                             child: IconButton(
                           onPressed: () => isHomeScreen
@@ -99,7 +100,7 @@ class BooksImageAndNameView extends StatelessWidget {
                               child: (booksVO.isSelected ?? false)
                                   ? const Icon(
                                       Icons.favorite,
-                                      color: kTealColor,
+                                      color: kCyanColor,
                                       size: kSP18x,
                                     )
                                   : const Icon(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import 'package:library_book/pages/create_shelf_page.dart';
-import 'package:library_book/utils/extensions.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
 
 import '../../constant/dimens.dart';
 import '../../constant/strings.dart';
@@ -82,9 +82,9 @@ class BottomSheetView extends StatelessWidget {
                 color: Colors.black38,
               ),
               onTap: () {
+                context.navigateBack(context);
                 context.navigateToNextScreen(
                     context, CreateShelfPage(booksVO: booksVO));
-                context.navigateBack(context);
               },
             ),
           ),

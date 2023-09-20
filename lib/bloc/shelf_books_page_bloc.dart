@@ -2,22 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:library_book/data/apply/library_apply.dart';
 import 'package:library_book/data/apply/library_apply_impl.dart';
 import 'package:library_book/data/vos/home_page_vo/shelf_vo/shelf_vo.dart';
+import 'package:library_book/persistent/dao/shelf_dao/shelf_dao.dart';
 import 'package:library_book/persistent/dao/shelf_dao/shelf_dao_impl.dart';
 
 import '../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 
-class ShelfPageBloc extends ChangeNotifier {
+class ShelfBooksPageBloc extends ChangeNotifier {
   ///state instance
   final LibraryApply _apply = LibraryApplyImpl();
   final ShelfDaoImpl _shelfDaoImpl = ShelfDaoImpl();
+  final ShelfDao _shelfDao = ShelfDaoImpl();
 
   ///state variable
   bool _dispose = false;
   List<ShelfVO>? _shelfList = [];
+  List<BooksVO> _bookList = [];
 
+  ///getter
   List<ShelfVO>? get getShelfList => _shelfList;
 
-  ShelfPageBloc(BooksVO booksVO) {
+  List<BooksVO>? get getBookList => _bookList;
+
+  ///bloc
+  ShelfBooksPageBloc(BooksVO booksVO) {
+    ///listen Shelf List From Database
     _apply.getShelfVOFromDatabase().listen((event) {
       if (event != null) {
         _shelfList = event;
@@ -36,6 +44,12 @@ class ShelfPageBloc extends ChangeNotifier {
     notifyListeners();
   }
 
+  void getBookListByShelfName(String shelfName) {
+    var shelfVO = _shelfDao.getShelfName(shelfName);
+    _bookList = shelfVO?.bookList ?? [];
+    notifyListeners();
+  }
+
   @override
   void notifyListeners() {
     if (!_dispose) {
@@ -49,57 +63,3 @@ class ShelfPageBloc extends ChangeNotifier {
     _dispose = true;
   }
 }
-
-// import 'package:flutter/material.dart';
-//
-// import '../data/apply/library_apply.dart';
-// import '../data/apply/library_apply_impl.dart';
-// import '../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
-// import '../data/vos/home_page_vo/shelf_vo/shelf_vo.dart';
-// import '../persistent/dao/shelf_dao/shelf_dao_impl.dart';
-//
-// class ShelfPageBloc extends ChangeNotifier{
-//
-//   // state variable
-//   bool _isDispose = false;
-//   List<ShelfVO>? _shelfList;
-//
-//
-//   // getter
-//   List<ShelfVO>? get getShelfList => _shelfList;
-//
-//   // state instance
-//   final LibraryApply _dataApply = LibraryApplyImpl();
-//   final ShelfDaoImpl _shelfDAOImpl = ShelfDaoImpl();
-//
-//
-//   ShelfPageBloc(BooksVO books){
-//     _dataApply.getShelfVOFromDatabase().listen((event) {
-//       _shelfList = event ?? [];
-//       notifyListeners();
-//     });
-//
-//   }
-//
-//
-//   void addBooksToShelf(ShelfVO shelfVO,BooksVO books){
-//     shelfVO.bookList.add(books);
-//     _shelfDAOImpl.saveShelf(shelfVO);
-//     notifyListeners();
-//   }
-//
-//   @override
-//   void notifyListeners() {
-//     // TODO: implement notifyListeners
-//     if(!_isDispose){
-//       super.notifyListeners();
-//     }
-//   }
-//
-//   @override
-//   void dispose() {
-//     // TODO: implement dispose
-//     super.dispose();
-//     _isDispose = true;
-//   }
-// }

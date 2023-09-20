@@ -20,6 +20,7 @@ class EasyButton extends StatelessWidget {
   final double width;
   final Function onPressed;
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -31,6 +32,8 @@ class EasyButton extends StatelessWidget {
       child: EasyTextWidget(
         text: text,
         color: textColor,
+        fontSize: 13,
+
       ),
     );
   }

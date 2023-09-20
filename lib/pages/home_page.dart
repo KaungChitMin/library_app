@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/constant/hive_constant.dart';
 import 'package:library_book/pages/search_page.dart';
-import 'package:library_book/utils/extensions.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
 import 'package:library_book/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 import '../bloc/home_page_bloc.dart';

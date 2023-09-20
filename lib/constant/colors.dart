@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-const kTealColor = Colors.teal;
-const kSecondaryTextColor = Colors.white;
-const kPrimaryTextColor = Colors.black;
-const kBookNameOnBottomSheetColor = Colors.white30;
+const kCyanColor = Color.fromRGBO(20, 188, 210, 1);
+const kWhiteColor = Colors.white;
+const kBlackColor = Colors.black;
 const kGreyColor = Colors.grey;
-const kRedColor = Colors.red;
-const kAmberColor = Colors.amber;
+const kTransparentColor = Colors.transparent;

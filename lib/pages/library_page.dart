@@ -3,7 +3,6 @@ import 'package:library_book/bloc/favourite_page_bloc.dart';
 import 'package:library_book/constant/dimens.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
-import 'package:library_book/pages/shelf_page.dart';
 import 'package:library_book/view_items/home_page_view_items/main_title_and_image_view_item.dart';
 import 'package:library_book/widgets/easy_text_widget.dart';
 import 'package:library_book/widgets/search_bar_widget.dart';
@@ -35,7 +34,8 @@ class FavouritePage extends StatelessWidget {
               ///Library's Tab Bar Session
               const TabBar(
                 unselectedLabelColor: kGreyColor,
-                labelColor: kTealColor,
+                labelColor: kCyanColor,
+                indicatorColor: kCyanColor,
                 tabs: [
                   Tab(
                     text: kYourBooksText,
@@ -46,7 +46,7 @@ class FavouritePage extends StatelessWidget {
                 ],
               ),
 
-              ///Your Books Session
+              ///(Favourite Page) Or (Your Books Session)
               ShowFavouriteBooksItemView(
                 listsVOList: bloc.getFavouriteList!,
               )
@@ -88,15 +88,11 @@ class ShowFavouriteBooksItemView extends StatelessWidget {
                 child: const Center(child: EasyTextWidget(text: kNoBooksText)))
           ],
         ),
+
+        ///(Create Shelf File And Shelf Books Session) Or (Your Shelf Session)
         CreateShelfPage(
-          isCheck: true,
           booksVO: BooksVO(title: DateTime.now().toString(), order: 0),
         ),
-        // ShelfPage(
-        //   text: 'mmm',
-        //   bookVO: BooksVO(title: DateTime.now().toString(), order: 0),
-        //   isChecked: true,
-        // )
       ]),
     );
   }

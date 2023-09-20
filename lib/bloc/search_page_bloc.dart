@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_book/data/apply/library_apply.dart';
 import 'package:library_book/data/apply/library_apply_impl.dart';
 
-import '../data/vos/search_vo/items_vo/items_vo.dart';
+import '../data/vos/search_vo/item_vo/item_vo.dart';
 
 class SearchPageBloc extends ChangeNotifier {
   final LibraryApply _apply = LibraryApplyImpl();

@@ -7,19 +7,27 @@ import '../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import '../data/vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
 
 class FavouritePageBloc extends ChangeNotifier {
+  ///state instance
   final LibraryApply _apply = LibraryApplyImpl();
   final ListsDaoImpl _listsDao = ListsDaoImpl();
 
+  ///state variable
   bool _dispose = false;
   List<ListsVO>? _favouriteList = [];
 
+  ///getter
   List<ListsVO>? get getFavouriteList => _favouriteList;
 
+  ///bloc
   FavouritePageBloc() {
+    ///listen List Vo List From Database
     _apply.getListsFromDataBase().listen((event) {
       if (event != null) {
         _favouriteList = event;
-        notifyListeners();
+      } else if (event == null) {
+        _favouriteList = null;
+      } else {
+        _favouriteList = [];
       }
       notifyListeners();
     });

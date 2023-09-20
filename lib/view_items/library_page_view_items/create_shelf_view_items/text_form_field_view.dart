@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/bloc/create_shelf.dart';
-import 'package:library_book/utils/extensions.dart';
-import 'package:provider/provider.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
 
 import '../../../constant/dimens.dart';
 import '../../../constant/strings.dart';
@@ -20,15 +18,16 @@ class TextFormFieldView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: kSP20x),
+              const SizedBox(height: kSP15x),
               TextFormField(
-                controller: context.getCreateShelfPageBloc().getTextEditingController,
+                controller:
+                    context.getCreateShelfPageBloc().getTextEditingController,
                 autofocus: true,
                 decoration: const InputDecoration(
                   hintText: kEnterShelfNameText,
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blueGrey)),
-                  contentPadding: EdgeInsets.symmetric(vertical: kSP15x),
+                  // focusedBorder: OutlineInputBorder(
+                  //     borderSide: BorderSide(color: Colors.blueGrey)),
+                  // contentPadding: EdgeInsets.symmetric(vertical: kSP15x),
                 ),
                 validator: (text) {
                   if (text!.isEmpty) {
@@ -38,7 +37,7 @@ class TextFormFieldView extends StatelessWidget {
                 },
               ),
               const SizedBox(
-                height: kSP20x,
+                height: kSP10x,
               ),
               const CancelAndOkButton(),
             ],
@@ -46,4 +45,3 @@ class TextFormFieldView extends StatelessWidget {
         ));
   }
 }
-

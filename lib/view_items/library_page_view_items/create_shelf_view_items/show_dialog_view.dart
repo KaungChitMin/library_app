@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/bloc/create_shelf.dart';
+import 'package:library_book/bloc/create_shelf_page_bloc.dart';
 import 'package:library_book/constant/colors.dart';
 import 'package:library_book/constant/dimens.dart';
 import 'package:library_book/widgets/easy_text_widget.dart';
@@ -22,8 +22,8 @@ class ShowDialogInFloatingView extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(kSP10x)),
                   child: SizedBox(
-                    height: 160,
-                    width: 300,
+                    height: kDialogHeight,
+                    width: kDialogWidth,
                     child: ChangeNotifierProvider<CreateShelfPageBloc>(
                         create: (_) => CreateShelfPageBloc(),
                         child: const TextFormFieldView()),
@@ -37,7 +37,7 @@ class ShowDialogInFloatingView extends StatelessWidget {
             Icon(Icons.edit),
             EasyTextWidget(
               text: kCreateNewText,
-              color: kSecondaryTextColor,
+              color: kWhiteColor,
               fontWeight: FontWeight.bold,
             ),
           ],

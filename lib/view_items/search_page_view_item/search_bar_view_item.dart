@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/utils/extensions.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
 
 import '../../widgets/search_bar_widget.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/utils/extensions.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
 import 'package:provider/provider.dart';
 
 import '../bloc/bottom_navigation_page_bloc.dart';
@@ -38,8 +38,8 @@ class BottomNavigationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: index,
-      selectedItemColor: kTealColor,
-      unselectedItemColor: kPrimaryTextColor,
+      selectedItemColor: kCyanColor,
+      unselectedItemColor: kBlackColor,
       onTap: (index) => context.getBottomNavigationPageBloc().pageChange(index),
       items: const [
         BottomNavigationBarItem(

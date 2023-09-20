@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../data/vos/search_vo/items_vo/items_vo.dart';
-
+import '../../../data/vos/search_vo/item_vo/item_vo.dart';
 
 part 'search_response.g.dart';
 

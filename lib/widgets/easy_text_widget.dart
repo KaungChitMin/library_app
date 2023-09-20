@@ -10,7 +10,7 @@ class EasyTextWidget extends StatelessWidget {
         required this.text,
         this.fontSize = kDefaultFontSize,
         this.fontWeight = FontWeight.w400,
-        this.color = kPrimaryTextColor,
+        this.color = kBlackColor,
         this.decoration = TextDecoration.none,
         this.maxLine,
         this.overflow = TextOverflow.ellipsis})

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/widgets/easy_image_widget.dart';
 
-import '../../data/vos/search_vo/items_vo/volume_info_vo.dart';
+import '../../data/vos/search_vo/item_vo/volume_info/volume_info.dart';
+
 
 // class VerticalSearchBookScrollView extends StatelessWidget {
 //   const VerticalSearchBookScrollView({super.key, required this.itemList});

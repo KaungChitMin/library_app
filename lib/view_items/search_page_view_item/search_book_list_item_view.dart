@@ -6,7 +6,7 @@ import 'package:library_book/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../constant/strings.dart';
-import '../../data/vos/search_vo/items_vo/items_vo.dart';
+import '../../data/vos/search_vo/item_vo/item_vo.dart';
 import 'book_image_and_name_view.dart';
 
 class SearchBookListItemView extends StatelessWidget {

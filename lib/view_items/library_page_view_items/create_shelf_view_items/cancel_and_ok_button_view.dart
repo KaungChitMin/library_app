@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/utils/extensions.dart';
+import 'package:library_book/utils/bloc_extensions.dart';
 
 import '../../../constant/colors.dart';
 import '../../../constant/dimens.dart';
@@ -15,19 +15,19 @@ class CancelAndOkButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         EasyButton(
-          color: kTealColor,
+          color: kCyanColor,
           text: kCancelText,
-          height: kSP40x,
-          textColor: kSecondaryTextColor,
+          height: kSP35x,
+          textColor: kWhiteColor,
           onPressed: () {
             context.navigateBack(context);
           },
         ),
         EasyButton(
-          color: kTealColor,
-          text: 'Ok',
-          height: kSP40x,
-          textColor: kPrimaryTextColor,
+          color: kCyanColor,
+          text: kOkText,
+          height: kSP35x,
+          textColor: kWhiteColor,
           onPressed: () {
             if (context
                     .getCreateShelfPageBloc()

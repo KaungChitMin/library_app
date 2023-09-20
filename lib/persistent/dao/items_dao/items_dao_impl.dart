@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 import 'package:library_book/constant/hive_constant.dart';
 import 'package:library_book/persistent/dao/items_dao/items_dao.dart';
 
-import '../../../data/vos/search_vo/items_vo/items_vo.dart';
+import '../../../data/vos/search_vo/item_vo/item_vo.dart';
 
 class ItemsDaoImpl extends ItemsDao {
   ItemsDaoImpl._();
