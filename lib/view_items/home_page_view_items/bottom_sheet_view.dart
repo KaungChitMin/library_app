@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:library_book/data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
+import 'package:library_book/pages/create_shelf_page.dart';
 import 'package:library_book/utils/extensions.dart';
 
 import '../../constant/dimens.dart';
@@ -10,12 +12,12 @@ import '../../widgets/easy_text_widget.dart';
 class BottomSheetView extends StatelessWidget {
   const BottomSheetView({
     super.key,
-    required this.bookName,
-    required this.imageUrl,
     required this.mainTitle,
+    required this.booksVO,
+    required this.imageUrl,
   });
 
-  final String bookName;
+  final BooksVO booksVO;
   final String imageUrl;
   final String mainTitle;
 
@@ -34,7 +36,7 @@ class BottomSheetView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 BookImageWidget(
-                  imageUrl: imageUrl,
+                  imageUrl: booksVO.bookImage ?? '',
                   height: kBookImageOnBottomSheetHeight,
                 ),
                 Column(
@@ -45,7 +47,7 @@ class BottomSheetView extends StatelessWidget {
                     const SizedBox(
                       height: kSP10x,
                     ),
-                    BookNameWidget(bookName: bookName),
+                    BookNameWidget(bookName: booksVO.title ?? ''),
                   ],
                 ),
                 const SizedBox(width: kSP10x)
@@ -57,7 +59,7 @@ class BottomSheetView extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: ShelfAndCancelWidget(
+            child: AddToShelfAndCancelWidget(
               text: kCancelText,
               icon: const Icon(
                 Icons.home_mini_outlined,
@@ -73,13 +75,17 @@ class BottomSheetView extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: ShelfAndCancelWidget(
+            child: AddToShelfAndCancelWidget(
               text: kShelfText,
               icon: const Icon(
                 Icons.add_circle_outline,
                 color: Colors.black38,
               ),
-              onTap: () {},
+              onTap: () {
+                context.navigateToNextScreen(
+                    context, CreateShelfPage(booksVO: booksVO));
+                context.navigateBack(context);
+              },
             ),
           ),
         ],
@@ -88,8 +94,8 @@ class BottomSheetView extends StatelessWidget {
   }
 }
 
-class ShelfAndCancelWidget extends StatelessWidget {
-  const ShelfAndCancelWidget({
+class AddToShelfAndCancelWidget extends StatelessWidget {
+  const AddToShelfAndCancelWidget({
     super.key,
     required this.text,
     required this.icon,

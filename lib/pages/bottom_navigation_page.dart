@@ -48,7 +48,7 @@ class BottomNavigationView extends StatelessWidget {
             ),
             label: kHomeIconText),
         BottomNavigationBarItem(
-            icon: Icon(Icons.library_books), label: kLibraryTitle),
+            icon: Icon(Icons.library_books), label: kLibraryTitleText),
       ],
     );
   }

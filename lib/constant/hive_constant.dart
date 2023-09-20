@@ -2,7 +2,7 @@
 const int kHiveTypeIDForBooks = 1;
 const int kHiveTypeIDForBuyLinks = 2;
 const int kHiveTypeIDForLists = 3;
-const int kHiveTypeIDForResults = 4;
+const int kHiveTypeIDForShelf = 4;
 const int kHiveTypeIDForSearchHistory = 5;
 const int kHiveTypeIDForSearch = 6;
 const int kHiveTypeIDForEpub = 7;
@@ -34,8 +34,9 @@ const int kHiveTypeIDForVolumeSeries = 18;
 const kPublishDate = '2023-03-12';
 
 /// box name
-const kBoxNameForResults = 'BOX_FOR_RESULTS';
-const kBoxNameForSearchHistoryVO = 'BOX_FOR_SEARCH_HISTORY';
 const kBoxNameForBook = 'BOX_FOR_BOOKS';
 const kBoxNameForItems = 'BOX_FOR_ITEMS';
 const kBoxNameForLists = 'BOX_FOR_LISTS';
+const kBoxNameForShelfVO = 'BOX_FOR_SHELF';
+const kBoxNameForSearchHistoryVO = 'BOX_FOR_SEARCH_HISTORY';
+

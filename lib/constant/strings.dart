@@ -1,7 +1,6 @@
-
-const String kLibraryTitle = 'Library App';
+const String kLibraryTitleText = 'Library App';
 const String kHomeIconText = 'Home';
-const String kPublishDate = '2023-03-12';
+const String kPublishDateText = '2023-03-12';
 const String kShelfText = 'Add To Shelf';
 const String kCancelText = 'Cancel';
 const String kSearchText = 'Search Books';
@@ -9,6 +8,7 @@ const String kNoDataText = 'No Data In Database';
 const String kYourBooksText = 'Your Books';
 const String kYourShelfText = 'Your Shelf';
 const String kNoBooksText = 'There is no book';
-const String kShelfIsEmpty = 'Shelf Name Is Empty';
-const String kEnterShelfName = '  Enter Shelf Name';
-const String kCreateNew = 'Create New';
+const String kShelfIsEmptyText = 'Shelf Name Is Empty';
+const String kEnterShelfNameText = '  Enter Shelf Name';
+const String kCreateNewText = 'Create New';
+const String kDefaultImage = "https://mocra.org/wp-content/uploads/2016/07/default.jpg";

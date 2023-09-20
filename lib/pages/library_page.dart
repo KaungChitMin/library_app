@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/bloc/favourite_page_bloc.dart';
 import 'package:library_book/constant/dimens.dart';
+import 'package:library_book/data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import 'package:library_book/data/vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
 import 'package:library_book/pages/shelf_page.dart';
 import 'package:library_book/view_items/home_page_view_items/main_title_and_image_view_item.dart';
@@ -10,6 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../constant/colors.dart';
 import '../constant/strings.dart';
+import 'create_shelf_page.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({super.key});
@@ -86,7 +88,15 @@ class ShowFavouriteBooksItemView extends StatelessWidget {
                 child: const Center(child: EasyTextWidget(text: kNoBooksText)))
           ],
         ),
-        const ShelfPage(),
+        CreateShelfPage(
+          isCheck: true,
+          booksVO: BooksVO(title: DateTime.now().toString(), order: 0),
+        ),
+        // ShelfPage(
+        //   text: 'mmm',
+        //   bookVO: BooksVO(title: DateTime.now().toString(), order: 0),
+        //   isChecked: true,
+        // )
       ]),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:library_book/constant/hive_constant.dart';
+import 'package:library_book/data/vos/home_page_vo/shelf_vo/shelf_vo.dart';
 import 'package:library_book/data/vos/search_vo/items_vo/access_info_vo.dart';
 import 'package:library_book/data/vos/search_vo/items_vo/epub_vo.dart';
 import 'package:library_book/data/vos/search_vo/items_vo/image_links_vo.dart';
@@ -28,7 +29,7 @@ void main() async {
   Hive.registerAdapter(BuyLinksAdapter());
   Hive.registerAdapter(BooksVOAdapter());
   Hive.registerAdapter(ListsVOAdapter());
-  Hive.registerAdapter(ResultsVOAdapter());
+  Hive.registerAdapter(ShelfVOAdapter());
   // Hive.registerAdapter(AccessInfoVOAdapter());
   // Hive.registerAdapter(EpubVOAdapter());
   // Hive.registerAdapter(ImageLinksVOAdapter());
@@ -42,10 +43,10 @@ void main() async {
   // Hive.registerAdapter(VolumeInfoVOAdapter());
   // Hive.registerAdapter(VolumeSeriesVOAdapter());
 
-  await Hive.openBox<ResultsVO>(kBoxNameForResults);
   await Hive.openBox<String>(kBoxNameForSearchHistoryVO);
   await Hive.openBox<BooksVO>(kBoxNameForBook);
   await Hive.openBox<ListsVO>(kBoxNameForLists);
+  await Hive.openBox<ShelfVO>(kBoxNameForShelfVO);
   // await Hive.openBox<ItemsVO>(kBoxNameForItems);
 
   runApp(const LibraryApp());
@@ -58,7 +59,7 @@ class LibraryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: kLibraryTitle,
+      title: kLibraryTitleText,
       home: BottomNavigationPage(),
     );
   }

@@ -52,3 +52,7 @@ BuyLinks _$BuyLinksFromJson(Map<String, dynamic> json) => BuyLinks(
       url: json['url'] as String?,
     );
 
+Map<String, dynamic> _$BuyLinksToJson(BuyLinks instance) => <String, dynamic>{
+      'name': instance.name,
+      'url': instance.url,
+    };

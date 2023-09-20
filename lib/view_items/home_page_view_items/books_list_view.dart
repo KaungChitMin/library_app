@@ -70,8 +70,8 @@ class BooksImageAndNameView extends StatelessWidget {
               showBottomSheet(
                   context: context,
                   builder: (_) => BottomSheetView(
-                        imageUrl: booksVO.bookImage ?? '',
-                        bookName: booksVO.title ?? '',
+                    booksVO: booksVO,
+                    imageUrl: booksVO.bookImage ?? '',
                         mainTitle: mainTitle,
                       ));
             },
