@@ -15,11 +15,11 @@ abstract class LibraryApply {
 
   Stream<List<BooksVO>?> getBookFromDatabase();
 
+  Stream<List<ShelfVO>?> getShelfVOFromDatabase();
+
   Stream<List<ItemsVO>?> getItemListFromDatabase();
 
   List<String>? getSearchHistoryList();
-
-  Stream<List<ShelfVO>?> getShelfVOFromDatabase();
 
   void saveSearchHistory(String query);
 

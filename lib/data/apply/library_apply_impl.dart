@@ -25,7 +25,7 @@ class LibraryApplyImpl extends LibraryApply {
 
   factory LibraryApplyImpl() => _singleton;
 
-  final LibraryDataAgent _libraryDataAgent = LibraryDataAgentImpl();
+  final LibraryDataAgent _dataAgent = LibraryDataAgentImpl();
 
   final BooksDao _bookDAO = BooksDaoImpl();
   final ListsDao _listDAO = ListsDaoImpl();
@@ -34,12 +34,12 @@ class LibraryApplyImpl extends LibraryApply {
   final ItemsDao _itemsDao = ItemsDaoImpl();
 
   @override
-  Future<List<ItemsVO>?> getItemListFromNetwork(String search) =>
-      _libraryDataAgent.getItemList(search).then((value) => value);
+  Future<List<ItemsVO>?> getItemListFromNetwork(String query) =>
+      _dataAgent.getItemList(query).then((value) => value);
 
   @override
   Future<List<ListsVO>?> getListsListFromNetwork(String publishedDate) =>
-      _libraryDataAgent.getLists(publishedDate).then((value) {
+      _dataAgent.getLists(publishedDate).then((value) {
         var temp = _listDAO.getListsFromDatabase();
         if (temp!.isEmpty) {
           _listDAO.save(value!);
@@ -47,7 +47,6 @@ class LibraryApplyImpl extends LibraryApply {
         return value;
       });
 
-  //database
   @override
   Stream<List<ListsVO>?> getListsFromDataBase() {
     return _listDAO

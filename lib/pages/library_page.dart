@@ -28,7 +28,6 @@ class FavouritePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ///Enable Search Bar Session
-              SearchBarWidget(isEnable: false, onTap: () {}),
               const SizedBox(height: kSP20x),
 
               ///Library's Tab Bar Session

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/constant/hive_constant.dart';
-import 'package:library_book/pages/search_page.dart';
-import 'package:library_book/utils/bloc_extensions.dart';
 import 'package:library_book/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
+
 import '../bloc/home_page_bloc.dart';
+import '../view_items/home_page_view_items/search_bar_navigate_view_item.dart';
 import '../view_items/home_page_view_items/vertical_books_view_item.dart';
-import '../widgets/search_bar_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,12 +25,7 @@ class HomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ///Search Bar Session
-                        SearchBarWidget(
-                            isEnable: true,
-                            onTap: () {
-                              context.navigateToNextScreen(
-                                  context, const SearchPage());
-                            }),
+                        const HonePageSearchBarViewItem(),
 
                         ///All Books Session
                         VerticalBooksListViewItem(

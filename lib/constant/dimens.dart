@@ -15,6 +15,7 @@ const double kSP20x = 20.0;
 const double kSP30x = 30.0;
 const double kSP35x = 35.0;
 const double kSP40x = 40.0;
+const double kSP45x = 45.0;
 const double kSP50x = 50.0;
 const double kSP205x = 205.0;
 

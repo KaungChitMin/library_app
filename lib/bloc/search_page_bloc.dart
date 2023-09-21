@@ -5,56 +5,61 @@ import 'package:library_book/data/apply/library_apply_impl.dart';
 import '../data/vos/search_vo/item_vo/item_vo.dart';
 
 class SearchPageBloc extends ChangeNotifier {
+  ///state instance
   final LibraryApply _apply = LibraryApplyImpl();
+  TextEditingController _textEditingController = TextEditingController();
 
+  ///state variable
   bool _dispose = false;
-
-  List<ItemsVO>? _itemsList = [];
-  String _query = '';
-  List<String>? _searchQueryList = [];
   bool _isSearching = false;
+  String _query = '';
+  List<ItemsVO>? _itemsList = [];
+  List<String>? _searchHistoryList = [];
 
-  List<ItemsVO>? get getItemsList => _itemsList;
-
-  List<String>? get getSearchQueryList => _searchQueryList;
+  ///getter
+  String get getQuery => _query;
 
   bool get getIsSearching => _isSearching;
 
-  String get query => _query;
+  List<ItemsVO>? get getItemsList => _itemsList;
 
+  List<String>? get getSearchHistoryList => _searchHistoryList;
+
+  TextEditingController get getTextEditingController => _textEditingController;
+
+  ///bloc
   SearchPageBloc() {
     ///Getting Search History list
     final historyList = _apply.getSearchHistoryList();
 
     if (historyList == null) {
-      _searchQueryList = null;
+      _searchHistoryList = null;
     } else if (historyList.isEmpty) {
-      _searchQueryList = [];
+      _searchHistoryList = [];
     } else {
-      _searchQueryList = historyList;
+      _searchHistoryList = historyList;
       notifyListeners();
     }
 
     ///item list from network
-    _apply.getItemListFromNetwork(query);
+    //_apply.getItemListFromNetwork(query);
 
     ///listen item list from database
-    _apply.getItemListFromDatabase().listen((event) {
-      if (event != null) {
-        _itemsList = event;
-      } else if (event == null) {
-        _itemsList = null;
-      } else {
-        _itemsList = [];
-      }
-    });
+    // _apply.getItemListFromDatabase().listen((event) {
+    //   if (event != null) {
+    //     _itemsList = event;
+    //   } else if (event == null) {
+    //     _itemsList = null;
+    //   } else {
+    //     _itemsList = [];
+    //   }
+    // });
   }
 
-  void saveQuery(String text) {
-    _query = text;
+  void searchText(String text) {
     _isSearching = true;
     notifyListeners();
-    _apply.getItemListFromNetwork(query).then((value) {
+    _apply.getItemListFromNetwork(text).then((value) {
       if (value != null) {
         _itemsList = value;
         notifyListeners();
@@ -65,8 +70,14 @@ class SearchPageBloc extends ChangeNotifier {
     });
   }
 
+  void saveSearchHistory(text) {
+    _apply.saveSearchHistory(text);
+  }
+
   void addQueryToSearchHistoryList(text) {
-    _searchQueryList!.add(text);
+    _query = text;
+    _textEditingController = TextEditingController(text: _query);
+    searchText(text);
     notifyListeners();
   }
 

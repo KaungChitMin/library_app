@@ -67,7 +67,7 @@ class AddSearchHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Selector<SearchPageBloc, List<String>?>(
-        selector: (_, bloc) => bloc.getSearchQueryList,
+        selector: (_, bloc) => bloc.getSearchHistoryList,
         builder: (_, list, __) => list == null
             ? const DefaultSearchView()
             : ListView.builder(
