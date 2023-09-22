@@ -56,7 +56,7 @@ class LibraryApplyImpl extends LibraryApply {
   }
 
   @override
-  List<String>? getSearchHistoryList() => _searchDao.getSearchStringList();
+  List<String>? getSearchHistoryList() => _searchDao.getSearchHistory();
 
   @override
   void saveSearchHistory(String query) => _searchDao.save(query);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/constant/colors.dart';
+import 'package:library_book/pages/details_page.dart';
 import 'package:library_book/utils/bloc_extensions.dart';
 
 import '../../constant/dimens.dart';
@@ -77,9 +78,17 @@ class BooksImageAndNameView extends StatelessWidget {
                       ));
             },
             child: Stack(children: [
-              BookImageWidget(
-                imageUrl: booksVO.bookImage ?? '',
+              GestureDetector(
+                onTap: () {
+                  context.navigateToNextScreen(
+                      context, DetailsPage(booksVO: booksVO));
+                },
+                child: BookImageWidget(
+                  imageUrl: booksVO.bookImage ?? '',
+                ),
               ),
+
+              ///favourite Icon session
               Padding(
                   padding: const EdgeInsets.only(right: kSP20x, top: kSP10x),
                   child: Align(

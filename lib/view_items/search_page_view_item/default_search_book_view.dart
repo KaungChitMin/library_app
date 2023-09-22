@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_book/bloc/search_page_bloc.dart';
+import 'package:library_book/constant/colors.dart';
 import 'package:library_book/constant/dimens.dart';
 import 'package:library_book/widgets/easy_text_widget.dart';
 import 'package:provider/provider.dart';
@@ -37,9 +38,15 @@ class SearchView extends StatelessWidget {
     Key? key,
     this.icon,
     required this.label,
+    this.color = kGreyColor,
+    this.fontSize = kDefaultFontSize,
+    this.iconColor = kBlackColor,
   }) : super(key: key);
   final IconData? icon;
   final String label;
+  final Color color;
+  final Color iconColor;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +54,17 @@ class SearchView extends StatelessWidget {
       padding: const EdgeInsets.all(kSP10x),
       child: Row(
         children: [
-          Icon(icon),
+          Icon(
+            icon,
+            color: iconColor,
+          ),
           const SizedBox(
-            width: kSP50x,
+            width: kSP30x,
           ),
           EasyTextWidget(
             text: label,
-            color: Colors.grey,
+            color: color,
+            fontSize: fontSize,
           )
         ],
       ),

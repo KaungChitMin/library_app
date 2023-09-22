@@ -10,13 +10,12 @@ class SearchBarWidget extends StatelessWidget {
       {super.key,
       required this.isEnable,
       this.onChanged,
-      required this.onTap,
       this.autoFocus = false,
-      required this.controller});
+      required this.controller, this.onSubmitted});
 
   final bool isEnable;
   final Function(String)? onChanged;
-  final Function onTap;
+  final Function(String)? onSubmitted;
   final bool autoFocus;
   final TextEditingController controller;
 
@@ -29,9 +28,8 @@ class SearchBarWidget extends StatelessWidget {
         enabled: isEnable,
         onChanged: (text) => onChanged!(text),
         controller: controller,
-        onTap: () => onTap(),
-        onSubmitted: (text) =>
-            context.getSearchPageBloc().saveSearchHistory(text),
+        onSubmitted: (text) => onSubmitted!(text),
+
         decoration: InputDecoration(
           prefixIcon: const Icon(
             Icons.search,

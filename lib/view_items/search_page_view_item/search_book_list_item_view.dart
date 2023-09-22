@@ -19,7 +19,7 @@ class ShowSearchBooksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Selector<SearchPageBloc, List<ItemsVO>?>(
-        selector: (_, bloc) => bloc.getItemsList,
+        selector: (_, bloc) => bloc.getItemList,
         builder: (_, itemsList, __) =>
             //     (itemsList != null && itemsList.isEmpty)
             //         ? Selector(
@@ -53,11 +53,8 @@ class ShowSearchHistoryView extends StatelessWidget {
               Column(
                 children: historyList
                     .map((text) => GestureDetector(
-                          onTap: () {
-                            context
-                                .getSearchPageBloc()
-                                .addQueryToSearchHistoryList(text);
-                          },
+                          onTap: () =>
+                            context.getSearchPageBloc().searchByHistory(text),
                           child: SearchView(
                             icon: Icons.history,
                             label: text,
@@ -67,6 +64,7 @@ class ShowSearchHistoryView extends StatelessWidget {
                     .reversed
                     .toList(),
               ),
+              const DefaultSearchView(),
             ]);
           })
       : Selector<SearchPageBloc, bool>(
