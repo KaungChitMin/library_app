@@ -19,7 +19,7 @@ class EmptyShelfView extends StatelessWidget {
             height: kSP205x,
           ),
           Icon(
-            Icons.library_add,
+            Icons.menu_book,
             size: kLibraryAddIconHeight,
             color: kGreyColor,
           ),

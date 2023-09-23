@@ -5,7 +5,6 @@ import 'package:library_book/data/vos/home_page_vo/results_vo/books_vo/book_vo.d
 import 'package:library_book/data/vos/home_page_vo/results_vo/lists_vo/lists_vo.dart';
 import 'package:library_book/view_items/home_page_view_items/main_title_and_image_view_item.dart';
 import 'package:library_book/widgets/easy_text_widget.dart';
-import 'package:library_book/widgets/search_bar_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../constant/colors.dart';

@@ -1,46 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:library_book/widgets/easy_image_widget.dart';
 
+import '../../constant/colors.dart';
+import '../../constant/dimens.dart';
 import '../../data/vos/search_vo/item_vo/volume_info/volume_info.dart';
+import '../../widgets/easy_image_widget.dart';
+import '../../widgets/easy_text_widget.dart';
 
-
-// class VerticalSearchBookScrollView extends StatelessWidget {
-//   const VerticalSearchBookScrollView({super.key, required this.itemList});
-//
-//   final List<ItemsVO> itemList;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Selector<SearchPageBloc, bool>(
-//         selector: (_, bloc) => bloc.getIsSearching,
-//         builder: (_, isSearching, __) => (isSearching)
-//             ? const LoadingWidget()
-//             : ListView.separated(
-//                 itemCount: itemList.length,
-//                 scrollDirection: Axis.vertical,
-//                 itemBuilder: (_, index) {
-//                   return BookImageAndNameView(
-//                     volumeInfoVO: itemList[index].volumeInfo!,
-//                   );
-//                 },
-//                 separatorBuilder: (_, index) => const SizedBox(height: kSP10x),
-//               ));
-//   }
-// }
-
-class BookImageAndNameView extends StatelessWidget {
-  const BookImageAndNameView({super.key, required this.volumeInfoVO});
+class SearchListViewItem extends StatelessWidget {
+  const SearchListViewItem({
+    Key? key,
+    required this.volumeInfoVO,
+  }) : super(key: key);
 
   final VolumeInfoVO volumeInfoVO;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
-        width: 50,
-        child: EasyImageWidget(
-          imageUrl: volumeInfoVO.imageLinks?.thumbnail ?? '',
-          fit: BoxFit.fitHeight,
+    return Padding(
+        padding: const EdgeInsets.all(kSP10x),
+        child: GestureDetector(
+          onTap: () {},
+          child: ListTileBooksTitleAndNameView(
+            leading: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(kSP15x)),
+              child: EasyImageWidget(
+                height: 100,
+                imageUrl: volumeInfoVO.imageLinks?.thumbnail ?? '',
+              ),
+            ),
+            title: volumeInfoVO.title ?? '',
+            subTitle: volumeInfoVO.printType ?? '',
+          ),
         ));
+  }
+}
+
+class ListTileBooksTitleAndNameView extends StatelessWidget {
+  const ListTileBooksTitleAndNameView(
+      {Key? key,
+      required this.leading,
+      required this.title,
+      required this.subTitle})
+      : super(key: key);
+
+  final Widget leading;
+  final String title;
+  final String subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        leading,
+        const SizedBox(
+          width: 3,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              EasyTextWidget(text: title),
+              const SizedBox(
+                height: 10,
+              ),
+              EasyTextWidget(
+                text: subTitle,
+                color: kBlackColor,
+              )
+            ],
+          ),
+        )
+      ],
+    );
   }
 }

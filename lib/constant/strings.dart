@@ -20,3 +20,4 @@ const String kSecondReviewImageText = 'https://img.freepik.com/free-vector/man-t
 const String kSecondReviewText = 'Chances are your friends are discussing their favorite (and least favorite)';
 const String kFeedBackText = 'Send FeedBack';
 const String kReviewText = 'Reviews';
+const String kShelfBooksText = 'Shelf Books';

@@ -5,7 +5,6 @@ import '../../../constant/api_constant.dart';
 import '../../../constant/dimens.dart';
 import '../../../data/vos/home_page_vo/results_vo/books_vo/book_vo.dart';
 import '../../../data/vos/home_page_vo/shelf_vo/shelf_vo.dart';
-import '../../../pages/shelf_books_page.dart';
 import '../../../widgets/easy_image_widget.dart';
 import '../../../widgets/easy_text_widget.dart';
 
@@ -47,14 +46,7 @@ class ShelfBooksListTileView extends StatelessWidget {
               : '${shelfVO.bookList.length} books'),
         ),
         trailing: IconButton(
-          onPressed: () {
-            context.navigateToNextScreen(
-                context,
-                ShelfBooksPage(
-                  shelfName: shelfVO.shelfName ?? '',
-                ));
-            //context.getShelfPageBloc().getBookListByShelfName(shelfVO.shelfName ?? '');
-          },
+          onPressed: () {},
           icon: const Icon(Icons.chevron_right),
         ),
       ),

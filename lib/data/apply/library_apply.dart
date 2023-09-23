@@ -17,7 +17,7 @@ abstract class LibraryApply {
 
   Stream<List<ShelfVO>?> getShelfVOFromDatabase();
 
-  Stream<List<ItemsVO>?> getItemListFromDatabase();
+  //Stream<List<ItemsVO>?> getItemListFromDatabase();
 
   List<String>? getSearchHistoryList();
 

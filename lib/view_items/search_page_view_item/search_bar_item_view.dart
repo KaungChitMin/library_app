@@ -37,11 +37,11 @@ class SearchPageSearchBarItemView extends StatelessWidget {
                   return SearchBarWidget(
                     autoFocus: true,
                     isEnable: true,
-                    onSubmitted: (text) {
-                      context.getSearchPageBloc().saveHistory(text);
-                    },
+                    // onSubmitted: (text) {
+                    //   context.getSearchPageBloc().saveHistory(text);
+                    // },
                     controller:
-                        context.getSearchPageBloc().getSearchEditingController,
+                        context.getSearchPageBloc().getTextEditingController,
                     onChanged: (text) {
                       context.getSearchPageBloc().searchText(text);
                     },
@@ -53,6 +53,7 @@ class SearchPageSearchBarItemView extends StatelessWidget {
     );
   }
 }
+
 
 class SearchItemView extends StatelessWidget {
   const SearchItemView({
@@ -79,7 +80,7 @@ class SearchItemView extends StatelessWidget {
               isEnable: true,
               onChange: (text) => context.getSearchPageBloc().searchText(text),
               controller:
-                  context.getSearchPageBloc().getSearchEditingController,
+                  context.getSearchPageBloc().getTextEditingController,
             ),
           ),
         ),
@@ -110,7 +111,7 @@ class SearchMovieWidget extends StatelessWidget {
         autofocus: isAutoFocus,
         enabled: isEnable,
         controller: controller,
-        onSubmitted: (text) => context.getSearchPageBloc().saveHistory(text),
+        onSubmitted: (text) => context.getSearchPageBloc().saveSearchHistory(text),
         decoration: const InputDecoration(
           filled: true,
           hintText: kSearchText,

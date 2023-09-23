@@ -72,22 +72,3 @@ class SearchView extends StatelessWidget {
   }
 }
 
-class AddSearchHistory extends StatelessWidget {
-  const AddSearchHistory({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Selector<SearchPageBloc, List<String>?>(
-        selector: (_, bloc) => bloc.getSearchHistoryList,
-        builder: (_, list, __) => list == null
-            ? const DefaultSearchView()
-            : ListView.builder(
-                itemCount: list.length,
-                itemBuilder: (_, index) {
-                  return SearchView(
-                    label: list[index],
-                  );
-                },
-              ));
-  }
-}

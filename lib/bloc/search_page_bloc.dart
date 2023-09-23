@@ -1,152 +1,70 @@
-// import 'package:flutter/material.dart';
-// import 'package:library_book/data/apply/library_apply.dart';
-// import 'package:library_book/data/apply/library_apply_impl.dart';
-//
-// import '../data/vos/search_vo/item_vo/item_vo.dart';
-//
-// class SearchPageBloc extends ChangeNotifier {
-//   ///state instance
-//   final LibraryApply _apply = LibraryApplyImpl();
-//   TextEditingController _textEditingController = TextEditingController();
-//
-//   ///state variable
-//   bool _dispose = false;
-//   bool _isSearching = false;
-//   String _query = ' ';
-//   String _history = ' ';
-//   List<ItemsVO>? _itemsList = [];
-//   List<String>? _searchHistoryList = [];
-//
-//   ///getter
-//   String get getQuery => _query;
-//
-//   String get getHistory => _history;
-//
-//   bool get getIsSearching => _isSearching;
-//
-//   List<ItemsVO>? get getItemsList => _itemsList;
-//
-//   List<String>? get getSearchHistoryList => _searchHistoryList;
-//
-//   TextEditingController get getTextEditingController => _textEditingController;
-//
-//   ///bloc
-//   SearchPageBloc() {
-//     ///Getting Search History list
-//     final historyList = _apply.getSearchHistoryList();
-//
-//     if (historyList == null) {
-//       _searchHistoryList = null;
-//     } else if (historyList.isEmpty) {
-//       _searchHistoryList = [];
-//     } else {
-//       _searchHistoryList = historyList;
-//       notifyListeners();
-//     }
-//
-//     ///item list from network
-//     _apply.getItemListFromNetwork(getHistory);
-//
-//     ///listen item list from database
-//     // _apply.getItemListFromDatabase().listen((event) {
-//     //   if (event != null) {
-//     //     _itemsList = event;
-//     //   } else if (event == null) {
-//     //     _itemsList = null;
-//     //   } else {
-//     //     _itemsList = [];
-//     //   }
-//     // });
-//   }
-//
-//   void searchText(String text) {
-//     _history = text;
-//     _isSearching = true;
-//     notifyListeners();
-//     _apply.getItemListFromNetwork(getHistory).then((value) {
-//       if (value != null) {
-//         _itemsList = value;
-//         notifyListeners();
-//       }
-//     }).whenComplete(() {
-//       _isSearching = false;
-//       notifyListeners();
-//     });
-//   }
-//
-//   void saveSearchHistory(text) {
-//     _apply.saveSearchHistory(text);
-//     notifyListeners();
-//   }
-//
-//   void addQueryToSearchHistoryList(text) {
-//     _query = text;
-//     _textEditingController = TextEditingController(text: _query);
-//     searchText(text);
-//     notifyListeners();
-//   }
-//
-//   @override
-//   void notifyListeners() {
-//     if (!_dispose) {
-//       super.notifyListeners();
-//     }
-//   }
-//
-//   @override
-//   void dispose() {
-//     super.dispose();
-//     _dispose = true;
-//   }
-// }
-
 import 'package:flutter/material.dart';
+import 'package:library_book/data/apply/library_apply.dart';
+import 'package:library_book/data/apply/library_apply_impl.dart';
 
-import '../data/apply/library_apply.dart';
-import '../data/apply/library_apply_impl.dart';
 import '../data/vos/search_vo/item_vo/item_vo.dart';
 
 class SearchPageBloc extends ChangeNotifier {
-  // state variable
-  List<ItemsVO>? _getItemVO = [];
-  List<String>? _getSearchHistory = [];
+  ///state instance
+  final LibraryApply _apply = LibraryApplyImpl();
+  TextEditingController _textEditingController = TextEditingController();
+
+  ///state variable
+  bool _dispose = false;
   bool _isSearching = false;
-  String _history = '';
-  TextEditingController _searchController = TextEditingController();
+  String _query = ' ';
+  String _history = ' ';
+  List<ItemsVO>? _itemsList = [];
+  List<String>? _searchHistoryList = [];
 
-  // getter
-  List<ItemsVO>? get getItemList => _getItemVO;
+  ///getter
+  String get getQuery => _query;
 
-  List<String>? get getSearchHistoryList => _getSearchHistory;
-
-  String get getQuery => _history;
+  String get getHistory => _history;
 
   bool get getIsSearching => _isSearching;
 
-  TextEditingController get getSearchEditingController => _searchController;
+  List<ItemsVO>? get getItemsList => _itemsList;
 
-  // state instance
+  List<String>? get getSearchHistoryList => _searchHistoryList;
 
-  final LibraryApply _dataApply = LibraryApplyImpl();
+  TextEditingController get getTextEditingController => _textEditingController;
 
+  ///bloc
   SearchPageBloc() {
-    final list = _dataApply.getSearchHistoryList();
-    if (list == null) {
-      _getSearchHistory = null;
-    } else if (list.isEmpty) {
-      _getSearchHistory = [];
+    ///Getting Search History list
+    List<String>? historyList = _apply.getSearchHistoryList();
+
+    if (historyList == null) {
+      _searchHistoryList = null;
+    } else if (historyList.isEmpty) {
+      _searchHistoryList = [];
     } else {
-      _getSearchHistory = list;
+      _searchHistoryList = historyList;
     }
     notifyListeners();
+    ///item list from network
+    _apply.getItemListFromNetwork(getHistory);
+
+    ///listen item list from database
+    // _apply.getItemListFromDatabase().listen((event) {
+    //   if (event != null) {
+    //     _itemsList = event;
+    //   } else if (event == null) {
+    //     _itemsList = null;
+    //   } else {
+    //     _itemsList = [];
+    //   }
+    // });
   }
 
-  void searchText(text) {
+  void searchText(String text) {
+    _history = text;
     _isSearching = true;
     notifyListeners();
-    _dataApply.getItemListFromNetwork(text).then((value) {
+    _apply.getItemListFromNetwork(getHistory).then((value) {
       if (value != null) {
-        _getItemVO = value;
+        _itemsList = value;
         notifyListeners();
       }
     }).whenComplete(() {
@@ -155,14 +73,28 @@ class SearchPageBloc extends ChangeNotifier {
     });
   }
 
-  void saveHistory(text) {
-    _dataApply.saveSearchHistory(text);
+  void saveSearchHistory(text) {
+    _apply.saveSearchHistory(text);
+    notifyListeners();
   }
 
-  void searchByHistory(text) {
-    _history = text;
-    _searchController = TextEditingController(text: _history);
+  void addQueryToSearchHistoryList(text) {
+    _query = text;
+    _textEditingController = TextEditingController(text: _query);
     searchText(text);
     notifyListeners();
+  }
+
+  @override
+  void notifyListeners() {
+    if (!_dispose) {
+      super.notifyListeners();
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _dispose = true;
   }
 }

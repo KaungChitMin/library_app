@@ -56,13 +56,17 @@ class LibraryApplyImpl extends LibraryApply {
   }
 
   @override
-  List<String>? getSearchHistoryList() => _searchDao.getSearchHistory();
+  List<String>? getSearchHistoryList() => _searchDao.getSearchStringList();
 
   @override
-  void saveSearchHistory(String query) => _searchDao.save(query);
+  void saveSearchHistory(String query) {
+    _searchDao.save(query);
+  }
 
   @override
-  void saveBook(BooksVO book) => _bookDAO.saveBook(book);
+  void saveBook(BooksVO book) {
+    _bookDAO.saveBook(book);
+  }
 
   @override
   void clearBookBox() => _bookDAO.clearBookBox();
@@ -75,13 +79,13 @@ class LibraryApplyImpl extends LibraryApply {
         .map((event) => _bookDAO.getBookFromDatabase());
   }
 
-  @override
-  Stream<List<ItemsVO>?> getItemListFromDatabase() {
-    return _itemsDao
-        .watchItemsBox()
-        .startWith(_itemsDao.getItemListFromDatabaseStream())
-        .map((event) => _itemsDao.getItemsListFromDatabase());
-  }
+  // @override
+  // Stream<List<ItemsVO>?> getItemListFromDatabase() {
+  //   return _itemsDao
+  //       .watchItemsBox()
+  //       .startWith(_itemsDao.getItemListFromDatabaseStream())
+  //       .map((event) => _itemsDao.getItemsListFromDatabase());
+  // }
 
   @override
   void createShelf(String shelfName, List<BooksVO> bookList) {
